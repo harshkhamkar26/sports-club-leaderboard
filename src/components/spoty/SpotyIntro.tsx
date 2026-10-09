@@ -31,7 +31,7 @@ export default function SpotyIntro({
         initial="blackScreen"
         exit="exit"
         className="relative flex min-h-screen flex-col items-center justify-between overflow-hidden bg-transparent px-4 sm:px-6 md:px-8 pt-20 pb-8 sm:pb-12 text-center"
-        aria-label="UAI Sports Club — THE ARENA"
+        aria-label="UAi Sports Club — THE ARENA"
       >
         {/* Live 3D WebGL Scene: Deep Navy to Royal Blue Sky, Metallic Gold Trophy, Soft Horizon Glow & Track */}
         <div className="absolute inset-0 z-0">
@@ -80,7 +80,7 @@ export default function SpotyIntro({
             <div className="mt-2.5 flex items-center gap-3">
               <span className="h-px w-8 sm:w-12 bg-gradient-to-r from-transparent to-[#D4AF37]/40" />
               <p className="font-sans text-[11px] sm:text-xs font-semibold uppercase tracking-[0.4em] text-[#F7F8FC]/90">
-                UAI SPORTS CLUB • 2026–2027
+                UAi SPORTS CLUB • 2026–2027
               </p>
               <span className="h-px w-8 sm:w-12 bg-gradient-to-l from-transparent to-[#D4AF37]/40" />
             </div>

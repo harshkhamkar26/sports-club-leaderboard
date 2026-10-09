@@ -176,7 +176,7 @@ export default function BroadcastPage({ broadcast, leaders = [] }: { broadcast: 
     return (
       <>
         <Head>
-          <title>Broadcast | UAI Sports Network</title>
+          <title>Broadcast | UAi Sports Network</title>
           <meta name="theme-color" content="#0a0a0a" />
         </Head>
         <div className="relative min-h-screen bg-[#060606] overflow-hidden">
@@ -194,7 +194,7 @@ export default function BroadcastPage({ broadcast, leaders = [] }: { broadcast: 
                 </h1>
                 <p className="font-sans text-lg text-white/50 max-w-md">
                   There are no live broadcasts at this time. Check back soon for
-                  the next UAI Sports Network event.
+                  the next UAi Sports Network event.
                 </p>
               </motion.div>
             </div>
@@ -207,11 +207,11 @@ export default function BroadcastPage({ broadcast, leaders = [] }: { broadcast: 
   return (
     <>
       <Head>
-        <title>Broadcast | UAI Sports Network</title>
+        <title>Broadcast | UAi Sports Network</title>
         <meta name="theme-color" content="#0a0a0a" />
         <meta
           name="description"
-          content={`Watch ${broadcast.title} live on UAI Sports Network. Follow @SPORTSCLUB_UAI to unlock.`}
+          content={`Watch ${broadcast.title} live on UAi Sports Network. Follow @SPORTSCLUB_UAI to unlock.`}
         />
       </Head>
 
@@ -234,12 +234,12 @@ export default function BroadcastPage({ broadcast, leaders = [] }: { broadcast: 
               </span>
             </div>
             <h1 className="font-display text-xl sm:text-2xl md:text-4xl font-black uppercase tracking-wide text-white truncate">
-              UAI SPORTS NETWORK
+              UAi SPORTS NETWORK
             </h1>
           </div>
           <img
             src="/images/sports-club-logo.png"
-            alt="UAI Sports Club"
+            alt="UAi Sports Club"
             className="h-9 sm:h-12 w-auto object-contain opacity-50 shrink-0"
           />
         </header>

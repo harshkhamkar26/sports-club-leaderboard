@@ -349,10 +349,10 @@ export default function Home({
                   <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-8">
                     <span className="font-display text-5xl font-black text-[#ef4444] mb-2">📺</span>
                     <h3 className="font-display text-3xl font-black uppercase text-white mb-2 group-hover:text-[#ef4444] transition-colors">
-                      UAI Sports Network
+                      UAi Sports Network
                     </h3>
                     <p className="font-sans text-sm text-white/50 max-w-sm">
-                      Watch live events, cheer for your athletes, and experience the action on the UAI Sports Network.
+                      Watch live events, cheer for your athletes, and experience the action on the UAi Sports Network.
                     </p>
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 h-1 bg-white/5">

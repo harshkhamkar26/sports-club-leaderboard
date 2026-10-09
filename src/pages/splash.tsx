@@ -51,7 +51,7 @@ export default function Splash() {
           transition={{ duration: 1.2, ease: "easeOut" }}
           className="relative z-10 bg-black/50 p-6 rounded-[2rem] border border-white/5 shadow-2xl mb-12 backdrop-blur-md"
         >
-          <img src="/images/uaiu-logo.png" alt="UAI" className="w-24 h-24 object-contain drop-shadow-xl" />
+          <img src="/images/uaiu-logo.png" alt="UAi" className="w-24 h-24 object-contain drop-shadow-xl" />
         </motion.div>
 
         {/* Title */}

@@ -129,7 +129,7 @@ interface SchoolProfileProps {
 
 export default function SchoolProfile({ school, stats, schoolRank }: SchoolProfileProps) {
   return (
-    <Layout title={`${school.name} | UAI Sports`}>
+    <Layout title={`${school.name} | UAi Sports`}>
       <Head>
         <meta name="theme-color" content="#0a0a0a" />
       </Head>

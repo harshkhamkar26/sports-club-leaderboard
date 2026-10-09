@@ -44,6 +44,7 @@ export default function LiveTVPage({
   const [data, setData] = useState(initialData);
   const [screen, setScreen] = useState<Screen>("intro");
   const [isDisplayMode, setIsDisplayMode] = useState(false);
+  const [showControlsInDisplay, setShowControlsInDisplay] = useState(true);
   const [isPaused, setIsPaused] = useState(false);
   const [clock, setClock] = useState(new Date());
   
@@ -158,7 +159,35 @@ export default function LiveTVPage({
     };
   }, []);
 
-  // Keyboard controls: F = fullscreen, arrows = nav, P = pause
+  // Display Mode controls visibility: auto-hide during presentation, show on movement/touch
+  useEffect(() => {
+    if (!isDisplayMode) {
+      setShowControlsInDisplay(true);
+      return;
+    }
+    setShowControlsInDisplay(true);
+    let timeout: NodeJS.Timeout;
+    const handleActivity = () => {
+      setShowControlsInDisplay(true);
+      clearTimeout(timeout);
+      timeout = setTimeout(() => {
+        setShowControlsInDisplay(false);
+      }, 3500);
+    };
+    timeout = setTimeout(() => {
+      setShowControlsInDisplay(false);
+    }, 3500);
+
+    window.addEventListener("mousemove", handleActivity);
+    window.addEventListener("touchstart", handleActivity);
+    return () => {
+      clearTimeout(timeout);
+      window.removeEventListener("mousemove", handleActivity);
+      window.removeEventListener("touchstart", handleActivity);
+    };
+  }, [isDisplayMode]);
+
+  // Keyboard controls: F = fullscreen, D = display mode, arrows = nav, P = pause, ESC = exit
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
       if (e.key === "f" || e.key === "F") {
@@ -168,27 +197,29 @@ export default function LiveTVPage({
           document.documentElement.requestFullscreen().catch(() => {});
         }
       }
+      if (e.key === "d" || e.key === "D") setIsDisplayMode((prev) => !prev);
+      if (e.key === "Escape" && isDisplayMode) setIsDisplayMode(false);
       if (e.key === "ArrowRight") goToNext();
       if (e.key === "ArrowLeft") goToPrev();
       if (e.key === "p" || e.key === "P") setIsPaused((p) => !p);
     };
     window.addEventListener("keydown", handleKey);
     return () => window.removeEventListener("keydown", handleKey);
-  }, [goToNext, goToPrev]);
+  }, [goToNext, goToPrev, isDisplayMode]);
 
   const { maleLeader, femaleLeader, schools, activeEvent } = data;
 
   return (
     <>
       <Head>
-        <title>UAI SPORTS LIVE — Digital Broadcast</title>
+        <title>UAi SPORTS LIVE — Digital Broadcast</title>
         <meta name="theme-color" content="#060606" />
       </Head>
 
       {/* TV Frame */}
       <div
         className="relative min-h-screen bg-[#060606] text-white overflow-hidden font-sans selection:bg-transparent"
-        style={{ cursor: isDisplayMode ? "none" : undefined }}
+        style={{ cursor: isDisplayMode && !showControlsInDisplay ? "none" : undefined }}
       >
         {/* Cinematic Background */}
         {screen !== "intro" && <CinematicBackground tone="live" />}
@@ -203,16 +234,22 @@ export default function LiveTVPage({
               className="relative z-20 flex items-center justify-between px-4 sm:px-6 md:px-12 py-3 sm:py-5"
               style={{ borderBottom: "1px solid rgba(255,255,255,0.06)" }}
             >
-              {/* Left: Branding */}
-              <div className="flex items-center gap-3 sm:gap-4 min-w-0">
+              {/* Left: Branding — Official Universal AI University & UAi Sports Club */}
+              <div className="flex items-center gap-2.5 sm:gap-4 min-w-0">
+                <img
+                  src="/images/uaiu-logo.png"
+                  alt="Universal AI University"
+                  className="h-6 sm:h-8 md:h-10 w-auto object-contain opacity-95 shrink-0 max-w-[110px] xs:max-w-[140px] sm:max-w-none"
+                />
+                <span className="h-5 sm:h-7 w-px bg-white/20 shrink-0 hidden xs:block" />
                 <img
                   src="/images/sports-club-logo.png"
-                  alt="UAI Sports Club"
-                  className="h-8 sm:h-10 w-auto object-contain opacity-80 shrink-0"
+                  alt="UAi Sports Club"
+                  className="h-7 sm:h-9 md:h-10 w-auto object-contain opacity-90 shrink-0"
                 />
                 <div className="flex flex-col min-w-0">
                   <span className="font-display text-xs sm:text-sm md:text-lg font-black uppercase tracking-[0.15em] text-white truncate">
-                    UAI Sports Club
+                    UAi Sports Club
                   </span>
                   {activeEvent ? (
                     <span className="font-sans text-[9px] sm:text-[10px] font-semibold uppercase tracking-[0.25em] sm:tracking-[0.3em] text-[#D4AF37] truncate">
@@ -226,8 +263,8 @@ export default function LiveTVPage({
                 </div>
               </div>
 
-              {/* Right: LIVE indicator + Clock */}
-              <div className="flex items-center gap-3 sm:gap-6 shrink-0">
+              {/* Right: LIVE indicator + Clock (Always unobstructed) */}
+              <div className="flex items-center gap-2.5 sm:gap-6 shrink-0">
                 <div className="flex items-center gap-1.5 sm:gap-2 rounded-full bg-[#ef4444]/15 border border-[#ef4444]/30 px-2.5 sm:px-4 py-1 sm:py-1.5">
                   <span className="relative flex h-2 sm:h-2.5 w-2 sm:w-2.5">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#ef4444] opacity-75"></span>
@@ -237,11 +274,11 @@ export default function LiveTVPage({
                     LIVE
                   </span>
                 </div>
-                <div className="hidden md:flex items-center gap-4">
-                  <span className="font-data-tabular text-xl font-bold text-white/80">
+                <div className="flex items-center gap-2 sm:gap-4">
+                  <span className="font-data-tabular text-sm sm:text-lg md:text-xl font-bold text-white/80">
                     {clock.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
                   </span>
-                  <span className="font-sans text-[10px] uppercase tracking-widest text-white/40">
+                  <span className="hidden sm:inline font-sans text-[10px] uppercase tracking-widest text-white/40">
                     {clock.toLocaleDateString([], { weekday: "short", day: "numeric", month: "short" })}
                   </span>
                 </div>
@@ -325,47 +362,72 @@ export default function LiveTVPage({
           />
         )}
 
-        {/* Manual Controls — hidden by default, appears on keyboard */}
-        <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-30 flex gap-2 bg-black/50 backdrop-blur-md rounded-full border border-white/10 px-3 py-2 control-bar">
-          <button onClick={goToPrev} className="px-3 py-1 rounded-full bg-white/10 text-white text-xs font-bold hover:bg-white/20 transition" title="Previous">
+        {/* Bottom Control Bar — Integrated Display Mode and TV Controls */}
+        <div
+          className={`fixed bottom-12 sm:bottom-14 left-1/2 -translate-x-1/2 z-30 flex items-center gap-1.5 sm:gap-2.5 bg-black/75 backdrop-blur-xl rounded-full border border-white/15 px-3 py-1.5 sm:px-4 sm:py-2 shadow-[0_10px_35px_rgba(0,0,0,0.8)] max-w-[calc(100vw-24px)] overflow-x-auto no-scrollbar control-bar ${
+            isDisplayMode && !showControlsInDisplay ? "opacity-0 pointer-events-none" : "opacity-100"
+          }`}
+        >
+          <button
+            onClick={goToPrev}
+            className="px-2.5 sm:px-3 py-1 rounded-full bg-white/10 hover:bg-white/20 text-white text-[11px] sm:text-xs font-semibold transition shrink-0 active:scale-95"
+            title="Previous Screen"
+          >
             ← Prev
           </button>
           <button
             onClick={() => setIsPaused((p) => !p)}
-            className="px-3 py-1 rounded-full bg-[#D4AF37] text-black text-xs font-bold hover:bg-[#D4AF37]/80 transition"
+            className={`px-3 py-1 rounded-full text-[11px] sm:text-xs font-bold transition shrink-0 active:scale-95 ${
+              isPaused
+                ? "bg-[#D4AF37] text-black hover:bg-[#D4AF37]/90"
+                : "bg-white/15 hover:bg-white/25 text-white"
+            }`}
           >
             {isPaused ? "▶ Resume" : "❚❚ Pause"}
           </button>
-          <button onClick={goToNext} className="px-3 py-1 rounded-full bg-white/10 text-white text-xs font-bold hover:bg-white/20 transition" title="Next">
+          <button
+            onClick={goToNext}
+            className="px-2.5 sm:px-3 py-1 rounded-full bg-white/10 hover:bg-white/20 text-white text-[11px] sm:text-xs font-semibold transition shrink-0 active:scale-95"
+            title="Next Screen"
+          >
             Next →
           </button>
           <button
             onClick={() => goToScreen("male")}
-            className="px-3 py-1 rounded-full bg-white/10 text-white text-xs font-bold hover:bg-white/20 transition"
+            className="px-2.5 sm:px-3 py-1 rounded-full bg-white/10 hover:bg-white/20 text-white text-[11px] sm:text-xs font-semibold transition shrink-0 hidden xs:inline-flex active:scale-95"
+            title="Restart Rotation"
           >
             ⟳ Restart
           </button>
-        </div>
 
-        {/* Exit / Enter Display Mode */}
-        <div className="fixed top-4 right-4 z-40">
+          <span className="h-4 w-px bg-white/20 shrink-0 mx-0.5" />
+
+          {/* Repositioned Enter / Exit Display Mode Button */}
           <button
             onClick={() => setIsDisplayMode((d) => !d)}
-            className="flex items-center gap-2 rounded-full bg-black/40 border border-white/15 backdrop-blur-md px-4 py-2 text-[10px] font-bold uppercase tracking-widest text-white/60 hover:text-white hover:border-white/30 transition-colors"
+            className={`flex items-center gap-1.5 px-3 sm:px-3.5 py-1 rounded-full text-[10px] sm:text-xs font-bold uppercase tracking-wider transition-all shrink-0 active:scale-95 ${
+              isDisplayMode
+                ? "bg-[#D4AF37] text-black hover:bg-[#D4AF37]/90 shadow-[0_0_15px_rgba(212,175,55,0.4)]"
+                : "bg-[#D4AF37]/20 border border-[#D4AF37]/40 text-[#D4AF37] hover:bg-[#D4AF37]/30"
+            }`}
+            title={isDisplayMode ? "Exit Display Mode (Esc)" : "Enter Display Mode (D)"}
           >
-            <span className="material-symbols-outlined text-xs">visibility</span>
-            {isDisplayMode ? "EXIT DISPLAY MODE" : "ENTER DISPLAY MODE"}
+            <span className="material-symbols-outlined text-xs sm:text-sm">
+              {isDisplayMode ? "fullscreen_exit" : "fullscreen"}
+            </span>
+            <span>{isDisplayMode ? "Exit Display Mode" : "Enter Display Mode"}</span>
           </button>
         </div>
       </div>
 
       <style jsx>{`
         .control-bar {
-          transition: opacity 0.3s;
-          opacity: ${isDisplayMode ? "0" : "1"};
+          transition: opacity 0.3s ease, transform 0.3s ease;
         }
-        .control-bar:hover {
-          opacity: 1;
+        .control-bar:hover,
+        .control-bar:focus-within {
+          opacity: 1 !important;
+          pointer-events: auto !important;
         }
       `}</style>
     </>
@@ -393,18 +455,24 @@ function AthleteScreen({
         animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
         exit={{ opacity: 0, scale: 1.04, filter: "blur(10px)" }}
         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-        className="flex flex-col items-center gap-8 text-center"
+        className="flex flex-col items-center gap-8 text-center max-w-3xl mx-auto"
       >
-        <div className="flex h-32 w-32 items-center justify-center rounded-full border-2 border-white/10 bg-white/[0.03]">
+        <div className="flex h-32 w-32 items-center justify-center rounded-full border-2 border-white/10 bg-white/[0.03] shadow-[0_0_50px_rgba(212,175,55,0.15)]">
           <span className="text-5xl">🏅</span>
         </div>
         <div>
-          <p className="font-sans text-xs uppercase tracking-[0.4em] text-white/40 mb-3">
-            {category} of the Year
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 mb-4">
+            <span className="material-symbols-outlined text-[#D4AF37] text-sm">emoji_events</span>
+            <span className="font-sans text-[11px] font-bold uppercase tracking-[0.25em] text-[#D4AF37]">
+              UAi Athletics Championship • Season 2026–2027
+            </span>
+          </div>
+          <h1 className="font-display text-3xl sm:text-5xl md:text-6xl font-black uppercase text-white mb-3">
+            SPORTS PERSON <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] via-[#FFF2B2] to-[#D4AF37]">OF THE YEAR</span>
+          </h1>
+          <p className="font-sans text-xs uppercase tracking-[0.3em] text-white/50">
+            {category} • LEADER TO BE ANNOUNCED
           </p>
-          <h2 className="font-display text-4xl md:text-6xl font-black uppercase text-white">
-            Leader to be Announced
-          </h2>
         </div>
       </motion.div>
     );
@@ -420,77 +488,88 @@ function AthleteScreen({
       animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
       exit={{ opacity: 0, scale: 1.05, filter: "blur(12px)" }}
       transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-      className="w-full max-w-[1600px] flex flex-col md:flex-row items-center
-      gap-8 md:gap-16"
+      className="w-full max-w-[1600px] flex flex-col md:flex-row items-center gap-8 md:gap-16"
     >
       {/* Left Content */}
       <div className="flex-1 order-2 md:order-1 text-center md:text-left relative z-10">
+        {/* Main Feature Heading — SPORTS PERSON OF THE YEAR */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-          className="flex items-center justify-center md:justify-start gap-3 mb-4"
+          transition={{ delay: 0.15 }}
+          className="mb-4 sm:mb-6"
         >
-          <span className="h-px w-10 bg-[#D4AF37]/60 hidden md:block" />
-          <span
-            className={`font-sans text-xs font-bold uppercase tracking-[0.35em] ${
-              accent === "gold" ? "text-[#D4AF37]" : "text-[#8B5CF6]"
-            }`}
-          >
-            {category} of the Year
-          </span>
+          <div className="flex items-center justify-center md:justify-start gap-2 mb-2 sm:mb-3">
+            <span className="material-symbols-outlined text-[#D4AF37] text-sm sm:text-base">emoji_events</span>
+            <span className="font-sans text-[10px] sm:text-xs font-bold uppercase tracking-[0.28em] text-[#D4AF37]">
+              UAi Athletics Championship • Season 2026–2027
+            </span>
+          </div>
+
+          <h1 className="font-display text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black uppercase tracking-tight text-white leading-[0.98]">
+            SPORTS PERSON{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] via-[#FFF2B2] to-[#D4AF37]">
+              OF THE YEAR
+            </span>
+          </h1>
+
+          <div className="flex items-center justify-center md:justify-start gap-2.5 sm:gap-3 mt-3">
+            <span className="h-px w-6 sm:w-10 bg-[#D4AF37]/60 hidden md:block" />
+            <span
+              className={`font-sans text-[11px] sm:text-xs font-black uppercase tracking-[0.25em] px-3.5 py-1 rounded-full ${
+                accent === "gold"
+                  ? "bg-[#D4AF37]/15 text-[#D4AF37] border border-[#D4AF37]/35 shadow-[0_0_12px_rgba(212,175,55,0.2)]"
+                  : "bg-[#8B5CF6]/15 text-[#8B5CF6] border border-[#8B5CF6]/35 shadow-[0_0_12px_rgba(139,92,246,0.2)]"
+              }`}
+            >
+              {category} LEADER • STANDING #{String(athlete.rank).padStart(2, "0")}
+            </span>
+          </div>
         </motion.div>
 
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.15 }}
-          className="font-sans text-sm font-semibold uppercase tracking-[0.2em] text-white/30 mb-2"
-        >
-          Current Leader
-        </motion.h2>
-
+        {/* Athlete Name & Standing */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 25 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="flex items-center justify-center md:justify-start gap-3 sm:gap-4 mb-2"
+          className="flex items-center justify-center md:justify-start gap-3 sm:gap-5 mb-2"
         >
           <span
-            className={`font-display text-4xl sm:text-6xl md:text-8xl font-black shrink-0 ${
+            className={`font-display text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black shrink-0 ${
               accent === "gold"
-                ? "text-[#D4AF37] drop-shadow-[0_0_30px_rgba(212,175,55,0.3)]"
-                : "text-[#8B5CF6] drop-shadow-[0_0_30px_rgba(139,92,246,0.3)]"
+                ? "text-[#D4AF37] drop-shadow-[0_0_30px_rgba(212,175,55,0.35)]"
+                : "text-[#8B5CF6] drop-shadow-[0_0_30px_rgba(139,92,246,0.35)]"
             }`}
           >
             #{String(athlete.rank).padStart(2, "0")}
           </span>
           <div className="text-left min-w-0">
-            <h3 className="font-display text-3xl sm:text-5xl md:text-7xl font-black uppercase text-white leading-[0.9] tracking-tight break-words">
+            <h2 className="font-display text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black uppercase text-white leading-[0.92] tracking-tight break-words">
               {firstName}
               <br />
               {lastName}
-            </h3>
+            </h2>
           </div>
         </motion.div>
 
-        {/* Meta line */}
+        {/* School & Sport Metadata */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5 }}
-          className="mt-6 flex flex-wrap items-center justify-center md:justify-start gap-x-6 gap-y-2"
+          transition={{ delay: 0.45 }}
+          className="mt-4 flex flex-wrap items-center justify-center md:justify-start gap-x-6 gap-y-2"
         >
           {athlete.sport && (
-            <span className="flex items-center gap-2 font-sans text-sm font-semibold text-white/80">
-              <span className="material-symbols-outlined text-base" style={{ color: accentColor }}>
+            <span className="flex items-center gap-2 font-sans text-xs sm:text-sm font-semibold text-white/90">
+              <span className="material-symbols-outlined text-sm sm:text-base" style={{ color: accentColor }}>
                 {athlete.sport.icon || "sports"}
               </span>
               {athlete.sport.name}
             </span>
           )}
           {athlete.school && (
-            <span className="font-sans text-sm text-white/50">
+            <span className="flex items-center gap-1.5 font-sans text-xs sm:text-sm text-white/60">
+              <span className="material-symbols-outlined text-xs sm:text-sm text-white/40">school</span>
               {athlete.school.name}
             </span>
           )}
@@ -592,7 +671,7 @@ function SchoolScreen({ schools }: { schools: LiveSchool[] }) {
     >
       <div className="text-center mb-8 sm:mb-10">
         <p className="font-sans text-xs font-bold uppercase tracking-[0.4em] text-[#D4AF37] mb-3">
-          School Championship
+          UAi School Championship
         </p>
         <h2 className="font-display text-3xl sm:text-4xl md:text-6xl font-black uppercase text-white tracking-tight">
           The Race for Campus Glory
@@ -693,7 +772,7 @@ function LiveTicker({
   const items = [
     ...(activeEvent
       ? [`${activeEvent.sport?.name || "SPORTS"} — ${activeEvent.name}`]
-      : ["UAI SPORTS LIVE"]),
+      : ["UAi SPORTS LIVE"]),
     maleLeader ? `SPORTSMAN • ${maleLeader.name} — ${maleLeader.totalPoints} PTS` : "",
     femaleLeader ? `SPORTSWOMAN • ${femaleLeader.name} — ${femaleLeader.totalPoints} PTS` : "",
     schools[0] ? `${schools[0].name.toUpperCase()} LEADS THE CAMPUS RACE — ${schools[0].totalPoints} PTS` : "",

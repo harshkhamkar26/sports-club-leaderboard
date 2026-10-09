@@ -2,7 +2,7 @@ import { prisma } from "./prisma";
 import { getMaleRankings, getFemaleRankings } from "./rankings";
 
 /**
- * UAI SPORTS LIVE — Centralized configuration for the TV/venue display.
+ * UAi SPORTS LIVE — Centralized configuration for the TV/venue display.
  * All timing and toggle settings live here for easy adjustment.
  */
 

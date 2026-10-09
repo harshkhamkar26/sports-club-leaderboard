@@ -63,7 +63,7 @@ export default function SchoolsPage({
   const maxPoints = schools.length > 0 ? Math.max(...schools.map((s) => s.totalPoints)) : 1;
 
   return (
-    <Layout title="School Rankings | UAI Sports Championship">
+    <Layout title="School Rankings | UAi Sports Championship">
       <Head>
         <meta name="theme-color" content="#0a0a0a" />
       </Head>
