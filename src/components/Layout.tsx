@@ -33,6 +33,15 @@ export default function Layout({
   const router = useRouter();
   const reducedMotion = useReducedMotion();
   const onSpoty = router.pathname === '/';
+  const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
+
+  React.useEffect(() => {
+    const handleClose = () => setMobileMenuOpen(false);
+    router.events.on('routeChangeStart', handleClose);
+    return () => {
+      router.events.off('routeChangeStart', handleClose);
+    };
+  }, [router]);
 
   return (
     <>
@@ -56,15 +65,16 @@ export default function Layout({
         <link rel="icon" href="/icon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.webmanifest" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
       <div className="min-h-screen bg-[#050505] text-white selection:bg-[#D4AF37]/30 selection:text-white">
         {/* Header */}
-        <header className="fixed top-0 z-50 w-full transition-all duration-500 bg-[#070707]/85 backdrop-blur-md border-b border-white/[0.06]">
-          <div className="mx-auto flex h-16 max-w-[1400px] items-center justify-between px-5 md:px-10">
-            <Link href="/" className="flex items-center gap-3">
+        <header className="fixed top-0 z-50 w-full transition-all duration-500 bg-[#051129]/80 backdrop-blur-xl border-b border-[#3b82f6]/25 shadow-[0_4px_30px_rgba(2,6,23,0.75)]">
+          <div className="absolute inset-x-0 bottom-0 h-[1px] bg-gradient-to-r from-transparent via-[#f5be38]/30 to-transparent pointer-events-none" />
+          <div className="mx-auto flex h-16 max-w-[1400px] items-center justify-between px-4 sm:px-6 md:px-10">
+            <Link href="/" className="flex items-center gap-3 shrink-0" onClick={() => setMobileMenuOpen(false)}>
               <div className="flex items-center gap-2">
-                <img alt="Universal AI University Sports Club" className="h-10 w-auto object-contain drop-shadow-lg" src="/images/sports-club-logo.png" />
+                <img alt="Universal AI University Sports Club" className="h-9 sm:h-10 w-auto object-contain drop-shadow-lg" src="/images/sports-club-logo.png" />
                 <motion.span
                   initial={reducedMotion ? undefined : { opacity: 0, letterSpacing: '0.5em' }}
                   animate={{ opacity: 1, letterSpacing: '0.12em' }}
@@ -96,7 +106,7 @@ export default function Layout({
               </Link>
             </nav>
 
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1 sm:gap-2">
               <Link href="/live" className="hidden items-center gap-2 rounded-full border border-[#ef4444]/40 bg-[#ef4444]/10 px-4 py-2 text-xs font-bold uppercase tracking-widest text-white transition-colors hover:bg-[#ef4444]/20 xl:flex">
                 <span className="h-2 w-2 rounded-full bg-[#ef4444]">
                   <motion.span
@@ -107,14 +117,81 @@ export default function Layout({
                 </span>
                 Live
               </Link>
-              <Link href="/search" className="flex h-9 w-9 items-center justify-center rounded-full text-white/60 transition-colors hover:bg-white/5 hover:text-white" aria-label="Search">
+              <Link href="/search" className="flex h-10 w-10 sm:h-9 sm:w-9 items-center justify-center rounded-full text-white/70 transition-colors hover:bg-white/5 hover:text-white" aria-label="Search">
                 <span className="material-symbols-outlined text-lg">search</span>
               </Link>
-              <Link href="/admin/login" className="flex h-9 w-9 items-center justify-center rounded-full text-white/60 transition-colors hover:bg-white/5 hover:text-white" aria-label="Admin">
+              <Link href="/admin/login" className="flex h-10 w-10 sm:h-9 sm:w-9 items-center justify-center rounded-full text-white/70 transition-colors hover:bg-white/5 hover:text-white" aria-label="Admin">
                 <span className="material-symbols-outlined text-lg">account_circle</span>
               </Link>
+
+              {/* Mobile Menu Toggle Button */}
+              <button
+                type="button"
+                onClick={() => setMobileMenuOpen((prev) => !prev)}
+                className="flex h-11 w-11 items-center justify-center rounded-xl text-white/80 hover:bg-white/5 hover:text-white md:hidden transition-colors focus:outline-none focus:ring-2 focus:ring-[#D4AF37]/50"
+                aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+                aria-expanded={mobileMenuOpen}
+              >
+                <span className="material-symbols-outlined text-2xl">
+                  {mobileMenuOpen ? 'close' : 'menu'}
+                </span>
+              </button>
             </div>
           </div>
+
+          {/* Mobile Navigation Drawer */}
+          {mobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.2 }}
+              className="border-b border-[#3b82f6]/25 bg-[#051129]/95 px-5 py-6 backdrop-blur-2xl md:hidden shadow-2xl max-h-[calc(100vh-64px)] overflow-y-auto"
+            >
+              <nav className="flex flex-col gap-2" aria-label="Mobile Navigation">
+                {NAV_LINKS.map((l) => {
+                  const active = router.pathname === l.href || (l.href === '/sports' && router.pathname.startsWith('/sports'));
+                  return (
+                    <Link
+                      key={l.href}
+                      href={l.href}
+                      onClick={() => setMobileMenuOpen(false)}
+                      className={`flex items-center justify-between rounded-xl px-4 py-3 font-sans text-xs font-bold uppercase tracking-[0.2em] transition-colors ${
+                        active ? 'bg-[#D4AF37]/15 text-[#D4AF37]' : 'text-white/70 hover:bg-white/5 hover:text-white'
+                      }`}
+                    >
+                      <span>{l.label}</span>
+                      <span className="material-symbols-outlined text-sm opacity-40">chevron_right</span>
+                    </Link>
+                  );
+                })}
+
+                <Link
+                  href="/"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex items-center justify-between rounded-xl bg-gradient-to-r from-[#D4AF37]/15 to-transparent px-4 py-3 font-sans text-xs font-bold uppercase tracking-[0.2em] text-[#D4AF37] transition-colors hover:from-[#D4AF37]/25 mt-1"
+                >
+                  <span className="flex items-center gap-2">
+                    <span>🏆</span>
+                    <span>Person of the Year</span>
+                  </span>
+                  <span className="material-symbols-outlined text-sm opacity-60">chevron_right</span>
+                </Link>
+
+                <Link
+                  href="/live"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex items-center justify-between rounded-xl border border-[#ef4444]/30 bg-[#ef4444]/10 px-4 py-3 font-sans text-xs font-bold uppercase tracking-[0.2em] text-white transition-colors hover:bg-[#ef4444]/20 mt-1"
+                >
+                  <span className="flex items-center gap-2">
+                    <span className="h-2 w-2 rounded-full bg-[#ef4444] animate-pulse" />
+                    <span>Watch Live Broadcast</span>
+                  </span>
+                  <span className="text-[10px] uppercase font-bold text-[#ef4444] tracking-widest">LIVE</span>
+                </Link>
+              </nav>
+            </motion.div>
+          )}
         </header>
 
         {/* Content */}

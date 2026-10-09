@@ -61,35 +61,35 @@ export default function TeamsDirectory() {
       <div className="flex-grow w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12">
         
         {/* Header & Actions */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 sm:mb-12 gap-4 sm:gap-6">
           <div>
-            <h1 className="font-headline-xl text-headline-xl text-on-background mb-2">Team Directory</h1>
-            <p className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">Browse the elite athletic and academic teams competing in the Universal AI University intramural ecosystem.</p>
+            <h1 className="font-headline-xl text-3xl sm:text-headline-xl text-on-background mb-2">Team Directory</h1>
+            <p className="font-body-lg text-sm sm:text-body-lg text-on-surface-variant max-w-2xl">Browse the elite athletic and academic teams competing in the Universal AI University intramural ecosystem.</p>
           </div>
-          <button className="bg-[#005ac2] text-white font-headline-md text-headline-md py-3 px-8 rounded-lg hover:opacity-90 transition-all active:scale-95 flex items-center gap-2">
-            <span className="material-symbols-outlined">add</span>
+          <button className="w-full sm:w-auto bg-[#005ac2] text-white font-headline-md text-sm sm:text-headline-md py-2.5 sm:py-3 px-6 sm:px-8 rounded-lg hover:opacity-90 transition-all active:scale-95 flex items-center justify-center gap-2">
+            <span className="material-symbols-outlined text-lg">add</span>
             Create Team
           </button>
         </div>
 
         {/* Filters */}
-        <div className="bg-[#162A45] p-6 rounded-lg mb-12 flex flex-col md:flex-row gap-6 items-center border border-[#3B82F6]/20">
-          <div className="flex-1 w-full flex items-center bg-surface-container rounded-lg px-4 border border-outline-variant focus-within:border-primary transition-colors">
-            <span className="material-symbols-outlined text-outline mr-2">search</span>
+        <div className="bg-[#162A45] p-4 sm:p-6 rounded-lg mb-8 sm:mb-12 flex flex-col md:flex-row gap-4 sm:gap-6 items-center border border-[#3B82F6]/20">
+          <div className="flex-1 w-full flex items-center bg-surface-container rounded-lg px-3 sm:px-4 border border-outline-variant focus-within:border-primary transition-colors">
+            <span className="material-symbols-outlined text-outline mr-2 text-lg">search</span>
             <input 
-              className="w-full bg-transparent border-none text-on-background font-body-md text-body-md py-3 focus:ring-0 placeholder:text-outline" 
+              className="w-full bg-transparent border-none text-on-background font-body-md text-sm sm:text-body-md py-2.5 sm:py-3 focus:ring-0 placeholder:text-outline" 
               placeholder="Search teams..." 
               type="text"
             />
           </div>
-          <div className="flex gap-4 w-full md:w-auto">
-            <select className="bg-surface-container border border-outline-variant text-on-background font-body-md text-body-md py-3 px-4 rounded-lg focus:ring-primary focus:border-primary min-w-[150px] appearance-none">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full md:w-auto">
+            <select className="w-full sm:w-auto bg-surface-container border border-outline-variant text-on-background font-body-md text-sm sm:text-body-md py-2.5 sm:py-3 px-3 sm:px-4 rounded-lg focus:ring-primary focus:border-primary min-w-0 sm:min-w-[150px] appearance-none">
               <option>All Sports</option>
               <option>Esports</option>
               <option>Robotics</option>
               <option>Data Science</option>
             </select>
-            <select className="bg-surface-container border border-outline-variant text-on-background font-body-md text-body-md py-3 px-4 rounded-lg focus:ring-primary focus:border-primary min-w-[150px] appearance-none">
+            <select className="w-full sm:w-auto bg-surface-container border border-outline-variant text-on-background font-body-md text-sm sm:text-body-md py-2.5 sm:py-3 px-3 sm:px-4 rounded-lg focus:ring-primary focus:border-primary min-w-0 sm:min-w-[150px] appearance-none">
               <option>All Schools</option>
               <option>Engineering</option>
               <option>Business</option>

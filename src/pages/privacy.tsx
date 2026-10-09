@@ -6,8 +6,8 @@ export default function PrivacyPolicy() {
   return (
     <Layout title="Privacy Policy | Universal AI University Sports">
       <CinematicBackground tone="ops" />
-      <div className="relative z-10 w-full min-h-screen pt-32 pb-24 px-5">
-        <div className="max-w-3xl mx-auto bg-[#111]/80 backdrop-blur-md p-8 md:p-12 rounded-3xl border border-white/10 prose prose-invert prose-p:text-white/70 prose-headings:text-white">
+      <div className="relative z-10 w-full min-h-screen pt-28 sm:pt-32 pb-20 sm:pb-24 px-4 sm:px-5">
+        <div className="max-w-3xl mx-auto bg-[#111]/80 backdrop-blur-md p-5 sm:p-8 md:p-12 rounded-2xl sm:rounded-3xl border border-white/10 prose prose-invert prose-p:text-white/70 prose-headings:text-white">
           <h1 className="font-display font-black uppercase tracking-widest text-[#D4AF37]">Privacy Policy</h1>
           <p>Last updated: August 2026</p>
           

@@ -33,29 +33,29 @@ export default function TeamDetail({ teamId, teamRoster, teamPoints }: { teamId:
     <Layout title={`${teamName} - Team Details | Universal AI University`}>
       <div className="flex flex-col flex-grow w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12">
         {/* Header */}
-        <section className="relative w-full h-[300px] min-h-[300px] flex items-end pb-12 mb-12 bg-surface-container rounded-xl overflow-hidden border border-outline-variant/30">
+        <section className="relative w-full min-h-[260px] h-auto md:h-[300px] flex items-end py-6 sm:py-8 md:pb-12 md:pt-0 mb-8 sm:mb-12 bg-surface-container rounded-xl overflow-hidden border border-outline-variant/30">
           <div className="absolute inset-0 bg-gradient-to-t from-[#162A45] to-transparent z-10"></div>
           <div className="absolute inset-0 bg-cover bg-center opacity-40 mix-blend-luminosity" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1579952363873-27f3bade9f55?q=80&w=800&auto=format&fit=crop')" }}></div>
           
-          <div className="relative z-20 w-full px-8 flex flex-col md:flex-row justify-between items-end gap-6">
-            <div className="flex items-center gap-6">
-              <div className="w-24 h-24 bg-surface-container-high rounded-full border-4 border-primary flex items-center justify-center shadow-lg">
-                <span className="material-symbols-outlined text-4xl text-primary">groups</span>
+          <div className="relative z-20 w-full px-4 sm:px-8 flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
+            <div className="flex items-center gap-4 sm:gap-6 min-w-0">
+              <div className="w-16 h-16 sm:w-24 sm:h-24 bg-surface-container-high rounded-full border-4 border-primary flex items-center justify-center shadow-lg shrink-0">
+                <span className="material-symbols-outlined text-2xl sm:text-4xl text-primary">groups</span>
               </div>
-              <div>
-                <h1 className="font-headline-xl text-headline-xl text-on-surface text-shadow-glow mb-1">{teamName}</h1>
-                <p className="font-body-lg text-primary">Varsity Squad</p>
+              <div className="min-w-0">
+                <h1 className="font-headline-xl text-2xl sm:text-3xl md:text-headline-xl text-on-surface text-shadow-glow mb-1 truncate">{teamName}</h1>
+                <p className="font-body-lg text-sm sm:text-base text-primary">Varsity Squad</p>
               </div>
             </div>
             
-            <div className="flex gap-4">
-              <div className="bg-surface-container-lowest/80 backdrop-blur-md rounded-lg p-4 border border-outline-variant/30 min-w-[120px] text-center">
-                <div className="font-headline-lg text-primary"><AnimatedCounter value={teamPoints} /></div>
-                <div className="font-label-caps text-on-surface-variant uppercase text-xs mt-1">Total Points</div>
+            <div className="flex gap-3 sm:gap-4 w-full sm:w-auto">
+              <div className="flex-1 sm:flex-none bg-surface-container-lowest/80 backdrop-blur-md rounded-lg p-3 sm:p-4 border border-outline-variant/30 min-w-0 sm:min-w-[120px] text-center">
+                <div className="font-headline-lg text-xl sm:text-2xl text-primary"><AnimatedCounter value={teamPoints} /></div>
+                <div className="font-label-caps text-on-surface-variant uppercase text-[10px] sm:text-xs mt-1">Total Points</div>
               </div>
-              <div className="bg-surface-container-lowest/80 backdrop-blur-md rounded-lg p-4 border border-outline-variant/30 min-w-[120px] text-center">
-                <div className="font-headline-lg text-on-surface">{teamRoster.length}</div>
-                <div className="font-label-caps text-on-surface-variant uppercase text-xs mt-1">Athletes</div>
+              <div className="flex-1 sm:flex-none bg-surface-container-lowest/80 backdrop-blur-md rounded-lg p-3 sm:p-4 border border-outline-variant/30 min-w-0 sm:min-w-[120px] text-center">
+                <div className="font-headline-lg text-xl sm:text-2xl text-on-surface">{teamRoster.length}</div>
+                <div className="font-label-caps text-on-surface-variant uppercase text-[10px] sm:text-xs mt-1">Athletes</div>
               </div>
             </div>
           </div>

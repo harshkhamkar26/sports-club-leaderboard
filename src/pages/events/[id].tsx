@@ -25,19 +25,19 @@ export default function EventDetail() {
                 COMPLETED
               </span>
             </div>
-            <h1 className="font-headline-xl text-[36px] md:text-headline-xl text-on-surface max-w-3xl leading-tight">
+            <h1 className="font-headline-xl text-2xl sm:text-[36px] md:text-headline-xl text-on-surface max-w-3xl leading-tight">
               Men's Basketball Finals 2024
             </h1>
-            <p className="font-body-lg text-body-lg text-on-surface-variant flex items-center gap-2">
-              <span className="material-symbols-outlined text-primary">calendar_month</span> October 24, 2024 • Main University Arena
+            <p className="font-body-lg text-sm sm:text-body-lg text-on-surface-variant flex items-center gap-2">
+              <span className="material-symbols-outlined text-primary text-base sm:text-xl">calendar_month</span> October 24, 2024 • Main University Arena
             </p>
           </div>
-          <div className="flex gap-4 w-full md:w-auto">
-            <button className="flex-1 md:flex-none px-6 py-3 bg-surface-container-highest border-2 border-outline-variant text-on-surface font-headline-md text-[16px] rounded-lg hover:bg-surface-bright transition-colors">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full md:w-auto">
+            <button className="flex-1 md:flex-none px-4 sm:px-6 py-2.5 sm:py-3 bg-surface-container-highest border-2 border-outline-variant text-on-surface font-headline-md text-sm sm:text-[16px] rounded-lg hover:bg-surface-bright transition-colors">
               Watch Replay
             </button>
-            <button className="flex-1 md:flex-none px-6 py-3 bg-primary text-on-primary font-headline-md text-[16px] rounded-lg hover:bg-primary-fixed transition-colors flex items-center justify-center gap-2">
-              <span className="material-symbols-outlined">share</span> Share
+            <button className="flex-1 md:flex-none px-4 sm:px-6 py-2.5 sm:py-3 bg-primary text-on-primary font-headline-md text-sm sm:text-[16px] rounded-lg hover:bg-primary-fixed transition-colors flex items-center justify-center gap-2">
+              <span className="material-symbols-outlined text-base sm:text-xl">share</span> Share
             </button>
           </div>
         </header>
@@ -45,7 +45,7 @@ export default function EventDetail() {
         {/* Bento Grid Layout for Main Event Data */}
         <section className="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
           {/* Hero Winner Card (Span 8) */}
-          <div className="lg:col-span-8 rounded-xl overflow-hidden relative min-h-[400px] flex flex-col justify-end group border border-outline-variant/30 hover:shadow-[0_4px_0_0_#4d8eff] hover:border-primary/50 transition-all duration-300">
+          <div className="lg:col-span-8 rounded-xl overflow-hidden relative min-h-[360px] sm:min-h-[400px] flex flex-col justify-end group border border-outline-variant/30 hover:shadow-[0_4px_0_0_#4d8eff] hover:border-primary/50 transition-all duration-300">
             <img 
               className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
               alt="Basketball Championship Celebration" 
@@ -55,24 +55,24 @@ export default function EventDetail() {
             <div className="absolute inset-0 bg-gradient-to-t from-[#0A192F] via-[#0A192F]/80 to-transparent"></div>
             
             {/* Content */}
-            <div className="relative z-10 p-8 flex flex-col gap-4">
-              <div className="flex items-center gap-4">
-                <div className="w-16 h-16 rounded-full bg-rank-gold flex items-center justify-center border-4 border-surface shadow-[0_0_20px_rgba(212,175,55,0.5)]">
-                  <span className="material-symbols-outlined text-on-tertiary text-3xl" style={{ fontVariationSettings: "'FILL' 1" }}>trophy</span>
+            <div className="relative z-10 p-5 sm:p-8 flex flex-col gap-4">
+              <div className="flex items-center gap-3 sm:gap-4">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-rank-gold flex items-center justify-center border-4 border-surface shadow-[0_0_20px_rgba(212,175,55,0.5)] shrink-0">
+                  <span className="material-symbols-outlined text-on-tertiary text-2xl sm:text-3xl" style={{ fontVariationSettings: "'FILL' 1" }}>trophy</span>
                 </div>
-                <div className="flex flex-col">
-                  <span className="font-label-caps text-label-caps text-rank-gold tracking-widest uppercase">2024 Champions</span>
-                  <h2 className="font-headline-lg text-headline-lg text-on-surface shadow-rank-gold text-shadow-glow">Engineering Eagles</h2>
+                <div className="flex flex-col min-w-0">
+                  <span className="font-label-caps text-[10px] sm:text-label-caps text-rank-gold tracking-widest uppercase">2024 Champions</span>
+                  <h2 className="font-headline-lg text-2xl sm:text-headline-lg text-on-surface shadow-rank-gold text-shadow-glow truncate">Engineering Eagles</h2>
                 </div>
               </div>
-              <div className="flex items-center gap-6 mt-2">
-                <div className="bg-[#162A45]/40 backdrop-blur-md border border-primary/10 px-4 py-2 rounded-lg">
-                  <span className="block font-label-caps text-[12px] text-on-surface-variant">FINAL SCORE</span>
-                  <span className="font-data-tabular text-[24px] font-bold text-on-surface">98 - 92</span>
+              <div className="flex flex-wrap items-center gap-3 sm:gap-6 mt-1 sm:mt-2">
+                <div className="bg-[#162A45]/40 backdrop-blur-md border border-primary/10 px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg">
+                  <span className="block font-label-caps text-[10px] sm:text-[12px] text-on-surface-variant">FINAL SCORE</span>
+                  <span className="font-data-tabular text-xl sm:text-[24px] font-bold text-on-surface">98 - 92</span>
                 </div>
-                <div className="bg-[#162A45]/40 backdrop-blur-md border border-primary/10 px-4 py-2 rounded-lg">
-                  <span className="block font-label-caps text-[12px] text-on-surface-variant">AWARDED POINTS</span>
-                  <span className="font-data-tabular text-[24px] font-bold text-rank-gold">+500 PTS</span>
+                <div className="bg-[#162A45]/40 backdrop-blur-md border border-primary/10 px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg">
+                  <span className="block font-label-caps text-[10px] sm:text-[12px] text-on-surface-variant">AWARDED POINTS</span>
+                  <span className="font-data-tabular text-xl sm:text-[24px] font-bold text-rank-gold">+500 PTS</span>
                 </div>
               </div>
             </div>

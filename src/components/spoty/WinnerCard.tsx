@@ -116,30 +116,30 @@ export default function WinnerCard({ category, profile, reveal, isPrimary = fals
         </AnimatePresence>
 
         {/* Content stack */}
-        <div className="absolute inset-0 flex flex-col justify-end p-7 md:p-10">
+        <div className="absolute inset-0 flex flex-col justify-end p-5 sm:p-7 md:p-10">
           <motion.p
             style={{ x: labelX }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.7 }}
-            className="font-sans text-[10px] md:text-xs font-semibold uppercase tracking-[0.4em] text-[#D4AF37]"
+            className="font-sans text-[10px] md:text-xs font-semibold uppercase tracking-[0.3em] sm:tracking-[0.4em] text-[#D4AF37]"
           >
             {categoryLabel}
           </motion.p>
 
-          <h2 className="mt-3 font-display text-[clamp(2rem,5vw,4.5rem)] font-black uppercase leading-none text-white [text-shadow:0_20px_60px_rgba(0,0,0,0.8)]">
+          <h2 className="mt-2 sm:mt-3 font-display text-[clamp(1.75rem,5vw,4.5rem)] font-black uppercase leading-none text-white [text-shadow:0_20px_60px_rgba(0,0,0,0.8)] break-words">
             {profile.name}
           </h2>
 
-          <p className="mt-3 font-sans text-sm font-light tracking-[0.2em] uppercase text-white/60">
+          <p className="mt-2 sm:mt-3 font-sans text-xs sm:text-sm font-light tracking-[0.15em] sm:tracking-[0.2em] uppercase text-white/60">
             {profile.sport}
-            <span className="mx-3 text-white/25">•</span>
+            <span className="mx-2 sm:mx-3 text-white/25">•</span>
             {profile.className}
           </p>
 
 
           {/* Winner reveal — THE WINNER IS... */}
-          <div className="mt-6 h-24 md:h-28">
+          <div className="mt-4 sm:mt-6 h-20 sm:h-24 md:h-28">
             <AnimatePresence mode="wait">
               {reveal === 'announcing' && (
                 <motion.div
@@ -148,10 +148,10 @@ export default function WinnerCard({ category, profile, reveal, isPrimary = fals
                   initial="hidden"
                   animate="visible"
                   exit={{ opacity: 0, filter: 'blur(6px)' }}
-                  className="flex items-center gap-4"
+                  className="flex items-center gap-3 sm:gap-4"
                 >
-                  <span className="h-px w-10 bg-[#D4AF37]" />
-                  <p className="font-sans text-sm md:text-base font-semibold uppercase tracking-[0.35em] text-[#D4AF37]">
+                  <span className="h-px w-6 sm:w-10 bg-[#D4AF37]" />
+                  <p className="font-sans text-xs sm:text-sm md:text-base font-semibold uppercase tracking-[0.25em] sm:tracking-[0.35em] text-[#D4AF37]">
                     The Winner Is
                   </p>
                 </motion.div>
@@ -163,12 +163,12 @@ export default function WinnerCard({ category, profile, reveal, isPrimary = fals
                   variants={winnerVariants}
                   initial="hidden"
                   animate="visible"
-                  className="flex flex-wrap items-center gap-4"
+                  className="flex flex-wrap items-center gap-3 sm:gap-4"
                 >
                   {/* Trophy emblem with light pulse */}
-                  <span className="relative flex h-12 w-12 items-center justify-center rounded-full border border-[#D4AF37]/40 bg-[#D4AF37]/10">
+                  <span className="relative flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full border border-[#D4AF37]/40 bg-[#D4AF37]/10 shrink-0">
                     <motion.span
-                      className="text-2xl"
+                      className="text-xl sm:text-2xl"
                       animate={reducedMotion ? undefined : { scale: [1, 1.12, 1] }}
                       transition={{ duration: 2.4, repeat: Infinity, ease: 'easeInOut' }}
                     >
@@ -181,10 +181,10 @@ export default function WinnerCard({ category, profile, reveal, isPrimary = fals
                     />
                   </span>
                   <div>
-                    <p className="font-sans text-xs font-bold uppercase tracking-[0.3em] text-[#D4AF37]">
+                    <p className="font-sans text-[11px] sm:text-xs font-bold uppercase tracking-[0.25em] sm:tracking-[0.3em] text-[#D4AF37]">
                       Official Winner
                     </p>
-                    <p className="font-sans text-[10px] uppercase tracking-[0.25em] text-white/50">
+                    <p className="font-sans text-[9px] sm:text-[10px] uppercase tracking-[0.2em] sm:tracking-[0.25em] text-white/50">
                       2025 — 26 Season
                     </p>
                   </div>
@@ -202,11 +202,11 @@ export default function WinnerCard({ category, profile, reveal, isPrimary = fals
           { value: profile.podiums, label: 'Podiums' },
           { value: profile.golds, label: 'Gold' },
         ].map((s) => (
-          <div key={s.label} className="px-6 py-4 text-center">
-            <span className="font-display text-xl md:text-2xl font-bold text-[#D4AF37]">
+          <div key={s.label} className="px-2 sm:px-6 py-3 sm:py-4 text-center">
+            <span className="font-display text-lg sm:text-xl md:text-2xl font-bold text-[#D4AF37]">
               {String(s.value).padStart(2, '0')}
             </span>
-            <span className="mt-1 block font-sans text-[9px] uppercase tracking-[0.25em] text-white/40">
+            <span className="mt-1 block font-sans text-[8px] sm:text-[9px] uppercase tracking-[0.2em] sm:tracking-[0.25em] text-white/40 truncate">
               {s.label}
             </span>
           </div>

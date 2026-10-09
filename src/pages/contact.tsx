@@ -30,10 +30,10 @@ export default function Contact() {
   return (
     <Layout title="Contact Us | Universal AI University Sports">
       <CinematicBackground tone="ops" />
-      <div className="relative z-10 w-full min-h-screen pt-32 pb-24 px-5">
-        <div className="max-w-2xl mx-auto bg-[#111]/80 backdrop-blur-md p-8 md:p-12 rounded-3xl border border-white/10">
+      <div className="relative z-10 w-full min-h-screen pt-28 sm:pt-32 pb-20 sm:pb-24 px-4 sm:px-5">
+        <div className="max-w-2xl mx-auto bg-[#111]/80 backdrop-blur-md p-5 sm:p-8 md:p-12 rounded-2xl sm:rounded-3xl border border-white/10">
           <Reveal>
-            <h1 className="font-display text-4xl md:text-5xl font-black uppercase text-white mb-2">Get in Touch</h1>
+            <h1 className="font-display text-3xl sm:text-4xl md:text-5xl font-black uppercase text-white mb-2">Get in Touch</h1>
             <p className="font-sans text-white/50 mb-8">Have questions about the leaderboard or an upcoming event?</p>
             
             <form onSubmit={handleSubmit} className="flex flex-col gap-6">

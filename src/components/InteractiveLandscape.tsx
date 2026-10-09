@@ -14,9 +14,9 @@ export default function InteractiveLandscape() {
           filter: 'brightness(1.05) contrast(1.15)',
         }}
       />
-      {/* Subtle blend to seamlessly match the obsidian theme and ensure text contrast */}
-      <div className="absolute inset-0 bg-gradient-to-t from-[#060606] via-transparent to-[#060606]/40 pointer-events-none" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_20%,#060606_85%)] pointer-events-none opacity-40" />
+      {/* Subtle atmospheric vignette that keeps the golden horizon & royal navy sky brilliant */}
+      <div className="absolute inset-0 bg-gradient-to-t from-[#020617]/70 via-transparent to-[#030a1c]/25 pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_45%,transparent_50%,rgba(3,10,28,0.35)_100%)] pointer-events-none" />
     </div>
   );
 }

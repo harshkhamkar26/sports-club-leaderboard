@@ -224,7 +224,7 @@ export default function AthleteProfile({ analytics, globalRank, categoryRank }: 
                   </p>
                 </div>
               </div>
-              <div className="mt-4 grid grid-cols-4 gap-4 text-center">
+              <div className="mt-4 grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 text-center">
                 <div>
                   <span className="font-display text-xl font-bold text-white">
                     {eventsCount}
@@ -262,14 +262,14 @@ export default function AthleteProfile({ analytics, globalRank, categoryRank }: 
           </Reveal>
 
           {/* Performance Grid: Chart + Sport Breakdown */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-16">
             {/* Points Over Time Chart */}
             <Reveal>
-              <div className="rounded-2xl border border-white/10 bg-[#111]/60 p-8 backdrop-blur-sm">
+              <div className="rounded-2xl border border-white/10 bg-[#111]/60 p-5 sm:p-6 md:p-8 backdrop-blur-sm">
                 <h3 className="font-display text-sm font-bold uppercase text-white/40 mb-6 tracking-widest">
                   Points Over Time
                 </h3>
-                <div className="h-64">
+                <div className="h-64 overflow-hidden">
                   {chartData.length > 0 ? (
                     <LineChart data={chartData} />
                   ) : (
@@ -283,17 +283,17 @@ export default function AthleteProfile({ analytics, globalRank, categoryRank }: 
 
             {/* Sport Breakdown */}
             <Reveal delay={0.2}>
-              <div className="rounded-2xl border border-white/10 bg-[#111]/60 p-8 backdrop-blur-sm">
+              <div className="rounded-2xl border border-white/10 bg-[#111]/60 p-5 sm:p-6 md:p-8 backdrop-blur-sm">
                 <h3 className="font-display text-sm font-bold uppercase text-white/40 mb-6 tracking-widest">
                   Sport Breakdown
                 </h3>
                 <div className="space-y-4">
                   {sportBreakdown.map((sport, i) => (
-                    <div key={sport.name} className="flex items-center gap-4">
-                      <span className="font-display text-sm font-bold text-white/40 w-6">
+                    <div key={sport.name} className="flex items-center gap-3 sm:gap-4">
+                      <span className="font-display text-sm font-bold text-white/40 w-5 sm:w-6 shrink-0">
                         {i + 1}
                       </span>
-                      <span className="font-sans text-sm font-medium text-white min-w-[120px]">
+                      <span className="font-sans text-xs sm:text-sm font-medium text-white min-w-[80px] sm:min-w-[120px] truncate">
                         {sport.name}
                       </span>
                       <div className="flex-1 h-2 rounded-full bg-white/[0.05] overflow-hidden">
@@ -306,7 +306,7 @@ export default function AthleteProfile({ analytics, globalRank, categoryRank }: 
                           transition={{ duration: 1, delay: i * 0.1 }}
                         />
                       </div>
-                      <span className="font-display text-sm font-bold text-[#D4AF37] w-16 text-right">
+                      <span className="font-display text-xs sm:text-sm font-bold text-[#D4AF37] w-12 sm:w-16 text-right shrink-0">
                         {sport.points}
                       </span>
                     </div>
@@ -445,7 +445,7 @@ function LineChart({ data }: { data: Array<{ date: string; points: number }> }) 
   const maxPoints = Math.max(...data.map((d) => d.points), 1);
   const chartHeight = 200;
   const chartWidth = 500;
-  const padding = 20;
+  const padding = 34;
 
   const points = data.map((d, i) => {
     const x = padding + (i / Math.max(data.length - 1, 1)) * (chartWidth - padding * 2);
@@ -462,7 +462,7 @@ function LineChart({ data }: { data: Array<{ date: string; points: number }> }) 
       width="100%"
       height={chartHeight}
       viewBox={`0 0 ${chartWidth} ${chartHeight}`}
-      className="overflow-visible"
+      className="overflow-hidden w-full h-full"
     >
       {/* Grid lines */}
       {[0, 25, 50, 75, 100].map((pct) => (

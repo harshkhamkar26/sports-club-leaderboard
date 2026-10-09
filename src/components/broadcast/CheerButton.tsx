@@ -45,7 +45,7 @@ export default function CheerButton({
       disabled={disabled}
       whileHover={!disabled ? { scale: 1.05, y: -2 } : {}}
       whileTap={!disabled ? { scale: 0.95 } : {}}
-      className={`relative flex items-center justify-center gap-2 rounded-xl px-4 py-3 font-sans text-xs font-bold uppercase tracking-widest transition-all disabled:opacity-50 disabled:cursor-not-allowed`}
+      className={`relative flex items-center justify-center gap-1.5 sm:gap-2 rounded-xl px-2.5 sm:px-4 py-2.5 sm:py-3 font-sans text-[11px] sm:text-xs font-bold uppercase tracking-wider sm:tracking-widest transition-all disabled:opacity-50 disabled:cursor-not-allowed`}
       style={{
         backgroundColor: `${color}15`,
         borderColor: `${color}40`,
@@ -53,8 +53,8 @@ export default function CheerButton({
         border: `1px solid ${color}40`,
       }}
     >
-      <span className="text-lg">{icon}</span>
-      <span>{label}</span>
+      <span className="text-base sm:text-lg shrink-0">{icon}</span>
+      <span className="truncate">{label}</span>
 
       {/* Particle burst on click */}
       <AnimatePresence>

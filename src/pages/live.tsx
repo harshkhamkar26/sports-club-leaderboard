@@ -200,26 +200,26 @@ export default function LiveTVPage({
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              className="relative z-20 flex items-center justify-between px-6 md:px-12 py-5"
+              className="relative z-20 flex items-center justify-between px-4 sm:px-6 md:px-12 py-3 sm:py-5"
               style={{ borderBottom: "1px solid rgba(255,255,255,0.06)" }}
             >
               {/* Left: Branding */}
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-3 sm:gap-4 min-w-0">
                 <img
                   src="/images/sports-club-logo.png"
                   alt="UAI Sports Club"
-                  className="h-10 w-auto object-contain opacity-80"
+                  className="h-8 sm:h-10 w-auto object-contain opacity-80 shrink-0"
                 />
-                <div className="flex flex-col">
-                  <span className="font-display text-sm md:text-lg font-black uppercase tracking-[0.15em] text-white">
+                <div className="flex flex-col min-w-0">
+                  <span className="font-display text-xs sm:text-sm md:text-lg font-black uppercase tracking-[0.15em] text-white truncate">
                     UAIU Sports Club
                   </span>
                   {activeEvent ? (
-                    <span className="font-sans text-[10px] font-semibold uppercase tracking-[0.3em] text-[#D4AF37]">
+                    <span className="font-sans text-[9px] sm:text-[10px] font-semibold uppercase tracking-[0.25em] sm:tracking-[0.3em] text-[#D4AF37] truncate">
                       {activeEvent.sport?.name || "Sports"} • Season 2025–26
                     </span>
                   ) : (
-                    <span className="font-sans text-[10px] font-semibold uppercase tracking-[0.3em] text-white/40">
+                    <span className="font-sans text-[9px] sm:text-[10px] font-semibold uppercase tracking-[0.25em] sm:tracking-[0.3em] text-white/40 truncate">
                       Season 2025–26 • Live Display
                     </span>
                   )}
@@ -227,13 +227,13 @@ export default function LiveTVPage({
               </div>
 
               {/* Right: LIVE indicator + Clock */}
-              <div className="flex items-center gap-6">
-                <div className="flex items-center gap-2 rounded-full bg-[#ef4444]/15 border border-[#ef4444]/30 px-4 py-1.5">
-                  <span className="relative flex h-2.5 w-2.5">
+              <div className="flex items-center gap-3 sm:gap-6 shrink-0">
+                <div className="flex items-center gap-1.5 sm:gap-2 rounded-full bg-[#ef4444]/15 border border-[#ef4444]/30 px-2.5 sm:px-4 py-1 sm:py-1.5">
+                  <span className="relative flex h-2 sm:h-2.5 w-2 sm:w-2.5">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#ef4444] opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#ef4444]"></span>
+                    <span className="relative inline-flex rounded-full h-2 sm:h-2.5 w-2 sm:w-2.5 bg-[#ef4444]"></span>
                   </span>
-                  <span className="font-sans text-xs font-black uppercase tracking-[0.2em] text-[#ef4444]">
+                  <span className="font-sans text-[10px] sm:text-xs font-black uppercase tracking-[0.2em] text-[#ef4444]">
                     LIVE
                   </span>
                 </div>
@@ -454,10 +454,10 @@ function AthleteScreen({
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="flex items-center justify-center md:justify-start gap-4 mb-2"
+          className="flex items-center justify-center md:justify-start gap-3 sm:gap-4 mb-2"
         >
           <span
-            className={`font-display text-6xl md:text-8xl font-black ${
+            className={`font-display text-4xl sm:text-6xl md:text-8xl font-black shrink-0 ${
               accent === "gold"
                 ? "text-[#D4AF37] drop-shadow-[0_0_30px_rgba(212,175,55,0.3)]"
                 : "text-[#8B5CF6] drop-shadow-[0_0_30px_rgba(139,92,246,0.3)]"
@@ -465,8 +465,8 @@ function AthleteScreen({
           >
             #{String(athlete.rank).padStart(2, "0")}
           </span>
-          <div className="text-left">
-            <h3 className="font-display text-5xl md:text-7xl font-black uppercase text-white leading-[0.9] tracking-tight">
+          <div className="text-left min-w-0">
+            <h3 className="font-display text-3xl sm:text-5xl md:text-7xl font-black uppercase text-white leading-[0.9] tracking-tight break-words">
               {firstName}
               <br />
               {lastName}
@@ -513,7 +513,7 @@ function AthleteScreen({
       {/* Right — Visual */}
       <div className="flex-1 order-1 md:order-2 relative flex items-center justify-center">
         <div
-          className="relative h-56 w-56 md:h-[36vw] md:w-[36vw] max-w-md max-h-[480px] rounded-full overflow-hidden border"
+          className="relative h-44 w-44 sm:h-56 sm:w-56 md:h-[36vw] md:w-[36vw] max-w-md max-h-[480px] rounded-full overflow-hidden border shrink-0"
           style={{
             borderColor:
               accent === "gold" ? "rgba(212,175,55,0.35)" : "rgba(139,92,246,0.35)",
@@ -590,16 +590,16 @@ function SchoolScreen({ schools }: { schools: LiveSchool[] }) {
       transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
       className="w-full max-w-5xl mx-auto"
     >
-      <div className="text-center mb-10">
+      <div className="text-center mb-8 sm:mb-10">
         <p className="font-sans text-xs font-bold uppercase tracking-[0.4em] text-[#D4AF37] mb-3">
           School Championship
         </p>
-        <h2 className="font-display text-4xl md:text-6xl font-black uppercase text-white tracking-tight">
+        <h2 className="font-display text-3xl sm:text-4xl md:text-6xl font-black uppercase text-white tracking-tight">
           The Race for Campus Glory
         </h2>
       </div>
 
-      <div className="space-y-5">
+      <div className="space-y-4 sm:space-y-5">
         {schools.slice(0, 5).map((school, i) => {
           const pct = (school.totalPoints / maxPoints) * 100;
           const isFirst = i === 0;
@@ -610,30 +610,41 @@ function SchoolScreen({ schools }: { schools: LiveSchool[] }) {
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: i * 0.15, duration: 0.6 }}
-              className="relative flex items-center gap-4 md:gap-8"
+              className="relative flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 md:gap-8 p-3 sm:p-0 rounded-xl sm:rounded-none bg-white/[0.02] sm:bg-transparent border border-white/5 sm:border-0"
             >
-              {/* Rank */}
-              <span
-                className="font-display text-5xl md:text-6xl font-black w-16 shrink-0 text-center"
-                style={{ color: isFirst ? "#D4AF37" : "rgba(255,255,255,0.15)" }}
-              >
-                {String(i + 1).padStart(2, "0")}
-              </span>
-
-              {/* Name */}
-              <div className="w-56 shrink-0">
-                <h3
-                  className="font-display text-lg md:text-2xl font-bold uppercase text-white"
-                  style={{ color: isFirst ? "#D4AF37" : "inherit" }}
+              {/* Rank & name */}
+              <div className="flex items-center gap-3 sm:gap-4 shrink-0">
+                <span
+                  className="font-display text-3xl sm:text-5xl md:text-6xl font-black w-10 sm:w-16 shrink-0 text-center"
+                  style={{ color: isFirst ? "#D4AF37" : "rgba(255,255,255,0.15)" }}
                 >
-                  {school.name}
-                </h3>
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+
+                <div className="w-auto sm:w-48 md:w-56 min-w-0">
+                  <h3
+                    className="font-display text-base sm:text-lg md:text-2xl font-bold uppercase text-white truncate"
+                    style={{ color: isFirst ? "#D4AF37" : "inherit" }}
+                  >
+                    {school.name}
+                  </h3>
+                </div>
+
+                {/* Mobile Points badge */}
+                <div className="sm:hidden ml-auto text-right shrink-0">
+                  <span className="font-display text-lg font-black text-[#D4AF37]">
+                    {school.totalPoints.toLocaleString()}
+                  </span>
+                  <span className="block font-sans text-[8px] uppercase tracking-widest text-white/40">
+                    PTS
+                  </span>
+                </div>
               </div>
 
               {/* Bar */}
-              <div className="flex-1 h-5 md:h-8 rounded-full bg-white/[0.04] border border-white/[0.06] overflow-hidden">
+              <div className="flex-1 h-3.5 sm:h-5 md:h-8 rounded-full bg-white/[0.04] border border-white/[0.06] overflow-hidden">
                 <motion.div
-                  className="h-full rounded-full flex items-center justify-end pr-3"
+                  className="h-full rounded-full flex items-center justify-end pr-2 sm:pr-3"
                   style={{
                     background: school.color
                       ? `linear-gradient(90deg, ${school.color}50, ${school.color})`
@@ -643,18 +654,18 @@ function SchoolScreen({ schools }: { schools: LiveSchool[] }) {
                   animate={{ width: `${pct}%` }}
                   transition={{ duration: 1, delay: 0.3 + i * 0.15 }}
                 >
-                  <span className="font-display text-sm md:text-lg font-bold text-white">
+                  <span className="font-display text-[10px] sm:text-sm md:text-lg font-bold text-white">
                     {school.totalPoints.toLocaleString()}
                   </span>
                 </motion.div>
               </div>
 
-              {/* Points */}
-              <div className="w-28 shrink-0 text-right">
-                <span className="font-display text-xl md:text-3xl font-black text-white">
+              {/* Desktop Points */}
+              <div className="hidden sm:block w-24 md:w-28 shrink-0 text-right">
+                <span className="font-display text-lg sm:text-xl md:text-3xl font-black text-white">
                   {school.totalPoints.toLocaleString()}
                 </span>
-                <span className="block font-sans text-[10px] uppercase tracking-widest text-white/40">
+                <span className="block font-sans text-[9px] sm:text-[10px] uppercase tracking-widest text-white/40">
                   Points
                 </span>
               </div>

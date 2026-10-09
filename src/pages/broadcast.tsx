@@ -219,33 +219,33 @@ export default function BroadcastPage({ broadcast, leaders = [] }: { broadcast: 
         <CinematicBackground tone="live" />
 
         {/* HEADER */}
-        <header className="relative z-20 w-full flex justify-between items-start p-6 md:p-12">
-          <div className="flex flex-col">
-            <div className="flex items-center gap-4 mb-2">
-              <span className="flex items-center gap-2 rounded-full bg-[#ef4444]/20 border border-[#ef4444]/40 px-4 py-1.5 font-sans text-xs font-bold uppercase tracking-widest text-[#ef4444]">
+        <header className="relative z-20 w-full flex justify-between items-center sm:items-start p-4 sm:p-6 md:p-12 gap-4">
+          <div className="flex flex-col min-w-0">
+            <div className="flex flex-wrap items-center gap-2 sm:gap-4 mb-2">
+              <span className="flex items-center gap-2 rounded-full bg-[#ef4444]/20 border border-[#ef4444]/40 px-3 sm:px-4 py-1 sm:py-1.5 font-sans text-[11px] sm:text-xs font-bold uppercase tracking-widest text-[#ef4444]">
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#ef4444] opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-[#ef4444]"></span>
                 </span>
                 LIVE
               </span>
-              <span className="font-sans text-[10px] font-bold uppercase tracking-[0.3em] text-white/50">
+              <span className="font-sans text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.25em] sm:tracking-[0.3em] text-white/50">
                 Season 2025–26
               </span>
             </div>
-            <h1 className="font-display text-2xl md:text-4xl font-black uppercase tracking-wide text-white">
+            <h1 className="font-display text-xl sm:text-2xl md:text-4xl font-black uppercase tracking-wide text-white truncate">
               UAIU SPORTS NETWORK
             </h1>
           </div>
           <img
             src="/images/sports-club-logo.png"
             alt="UAI Sports Club"
-            className="h-12 w-auto object-contain opacity-50"
+            className="h-9 sm:h-12 w-auto object-contain opacity-50 shrink-0"
           />
         </header>
 
         {/* MAIN CONTENT */}
-        <main className="relative z-10 mx-auto max-w-[1400px] px-5 md:px-10 pb-24">
+        <main className="relative z-10 mx-auto max-w-[1400px] px-4 sm:px-5 md:px-10 pb-24">
           {/* Desktop: Two-column layout */}
           <div className="hidden lg:grid lg:grid-cols-12 gap-8">
             {/* Video + Event Info (8 cols) */}
@@ -383,8 +383,49 @@ export default function BroadcastPage({ broadcast, leaders = [] }: { broadcast: 
               event={broadcast.event}
             />
 
+            {/* Viewer Count (Mobile) */}
+            <div className="flex items-center justify-center gap-2 rounded-xl bg-white/[0.03] border border-white/[0.06] px-4 py-3">
+              <span className="font-sans text-xs uppercase tracking-widest text-white/40">
+                LIVE VIEWERS
+              </span>
+              <span className="font-display text-xl font-bold text-[#60a5fa]">
+                {viewerCount}
+              </span>
+            </div>
+
+            {/* Top Student Leaders (Mobile) */}
+            {leaders && leaders.length > 0 && (
+              <div className="rounded-2xl border border-[#D4AF37]/30 bg-[#111]/80 p-5 sm:p-6 backdrop-blur-md shadow-[0_0_20px_rgba(212,175,55,0.15)] relative overflow-hidden">
+                <div className="absolute top-0 right-0 p-4 opacity-10 pointer-events-none">
+                  <span className="material-symbols-outlined text-7xl">emoji_events</span>
+                </div>
+                <h3 className="font-display text-sm font-bold uppercase text-[#D4AF37] mb-4 tracking-widest flex items-center gap-2 relative z-10">
+                  <span className="material-symbols-outlined text-sm">leaderboard</span>
+                  Championship Leaders
+                </h3>
+                <div className="space-y-2.5 relative z-10">
+                  {leaders.map((leader, idx) => (
+                    <div key={leader.id} className="flex items-center justify-between p-3 bg-black/40 rounded-xl border border-white/5">
+                      <div className="flex items-center gap-3 min-w-0">
+                        <div className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center font-bold text-xs shrink-0 ${idx === 0 ? 'bg-[#D4AF37] text-black shadow-[0_0_10px_rgba(212,175,55,0.5)]' : idx === 1 ? 'bg-slate-300 text-black' : idx === 2 ? 'bg-amber-600 text-white' : 'bg-white/10 text-white/60'}`}>
+                          #{idx + 1}
+                        </div>
+                        <div className="min-w-0">
+                          <div className="font-bold text-white text-sm truncate">{leader.name}</div>
+                          <div className="text-[10px] text-white/50 uppercase tracking-wide truncate">{leader.school?.name || leader.rollNumber}</div>
+                        </div>
+                      </div>
+                      <div className="font-display font-black text-lg text-[#D4AF37] shrink-0 ml-2">
+                        {leader.totalPoints}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
             {/* Event Info */}
-            <div className="rounded-2xl border border-white/10 bg-[#111]/60 p-6 backdrop-blur-sm">
+            <div className="rounded-2xl border border-white/10 bg-[#111]/60 p-5 sm:p-6 backdrop-blur-sm">
               <h3 className="font-display text-sm font-bold uppercase text-white/40 mb-4 tracking-widest">
                 EVENT INFO
               </h3>
@@ -393,7 +434,7 @@ export default function BroadcastPage({ broadcast, leaders = [] }: { broadcast: 
                   <span className="font-sans text-xs uppercase tracking-widest text-white/40">
                     Sport
                   </span>
-                  <p className="font-sans text-lg font-bold text-white">
+                  <p className="font-sans text-base sm:text-lg font-bold text-white">
                     {broadcast.event?.sport?.name || "Sports"}
                   </p>
                 </div>
@@ -401,7 +442,7 @@ export default function BroadcastPage({ broadcast, leaders = [] }: { broadcast: 
                   <span className="font-sans text-xs uppercase tracking-widest text-white/40">
                     Category
                   </span>
-                  <p className="font-sans text-lg font-bold text-white">
+                  <p className="font-sans text-base sm:text-lg font-bold text-white">
                     {broadcast.event?.category || "N/A"}
                   </p>
                 </div>
@@ -409,7 +450,7 @@ export default function BroadcastPage({ broadcast, leaders = [] }: { broadcast: 
                   <span className="font-sans text-xs uppercase tracking-widest text-white/40">
                     Venue
                   </span>
-                  <p className="font-sans text-lg font-bold text-white">
+                  <p className="font-sans text-base sm:text-lg font-bold text-white">
                     {broadcast.event?.venue || "TBD"}
                   </p>
                 </div>
@@ -417,21 +458,21 @@ export default function BroadcastPage({ broadcast, leaders = [] }: { broadcast: 
             </div>
 
             {/* Current Score */}
-            <div className="rounded-2xl border border-white/10 bg-[#111]/60 p-6 backdrop-blur-sm">
+            <div className="rounded-2xl border border-white/10 bg-[#111]/60 p-5 sm:p-6 backdrop-blur-sm">
               <h3 className="font-display text-sm font-bold uppercase text-white/40 mb-4 tracking-widest">
                 CURRENT SCORE
               </h3>
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <span className="font-sans text-lg font-bold text-white">Team A</span>
-                  <span className="font-display text-3xl font-black text-[#D4AF37]">
+                  <span className="font-sans text-base sm:text-lg font-bold text-white">Team A</span>
+                  <span className="font-display text-2xl sm:text-3xl font-black text-[#D4AF37]">
                     {currentScore.teamA}
                   </span>
                 </div>
                 <div className="h-px bg-white/10" />
                 <div className="flex items-center justify-between">
-                  <span className="font-sans text-lg font-bold text-white">Team B</span>
-                  <span className="font-display text-3xl font-black text-[#D4AF37]">
+                  <span className="font-sans text-base sm:text-lg font-bold text-white">Team B</span>
+                  <span className="font-display text-2xl sm:text-3xl font-black text-[#D4AF37]">
                     {currentScore.teamB}
                   </span>
                 </div>
@@ -439,11 +480,11 @@ export default function BroadcastPage({ broadcast, leaders = [] }: { broadcast: 
             </div>
 
             {/* Cheer Bar */}
-            <div className="rounded-2xl border border-white/10 bg-[#111]/60 p-6 backdrop-blur-sm">
+            <div className="rounded-2xl border border-white/10 bg-[#111]/60 p-5 sm:p-6 backdrop-blur-sm">
               <h3 className="font-display text-sm font-bold uppercase text-white/40 mb-4 tracking-widest">
                 🔥 CHEER THE ATHLETES
               </h3>
-              <div className="grid grid-cols-3 gap-2 mb-4">
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-3 mb-4">
                 {Object.entries(CHEER_CONFIG).map(([type, config]) => (
                   <CheerButton
                     key={type}
@@ -468,7 +509,7 @@ export default function BroadcastPage({ broadcast, leaders = [] }: { broadcast: 
             </div>
 
             {/* Live Chat */}
-            <div className="rounded-2xl border border-white/10 bg-[#111]/60 p-6 backdrop-blur-sm">
+            <div className="rounded-2xl border border-white/10 bg-[#111]/60 p-5 sm:p-6 backdrop-blur-sm">
               <h3 className="font-display text-sm font-bold uppercase text-white/40 mb-4 tracking-widest">
                 LIVE CHAT
               </h3>

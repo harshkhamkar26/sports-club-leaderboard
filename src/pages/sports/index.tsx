@@ -44,10 +44,10 @@ export default function SportsDirectory() {
 
   return (
     <Layout title="Sports Directory - Universal AI University Athletics">
-      <div className="w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-[80px]">
+      <div className="w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-10 sm:py-16 md:py-[80px]">
         {/* Header Section */}
-        <header className="mb-[80px]">
-          <h1 className="font-headline-xl text-headline-xl text-on-surface mb-base">Sports Directory</h1>
+        <header className="mb-10 sm:mb-16 md:mb-[80px]">
+          <h1 className="font-headline-xl text-3xl sm:text-4xl md:text-headline-xl text-on-surface mb-base">Sports Directory</h1>
           <p className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
             Explore the athletic disciplines at Universal AI University. Discover the current standings, top athletes, and upcoming events across all major sports.
           </p>

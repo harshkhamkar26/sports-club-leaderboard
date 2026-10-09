@@ -68,24 +68,24 @@ export default function InstagramGate({ onUnlock, broadcastTitle }: InstagramGat
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm overflow-y-auto"
         >
           <motion.div
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
             transition={{ type: "spring", damping: 20 }}
-            className="relative mx-4 max-w-md rounded-3xl border border-white/10 bg-[#111] p-8 text-center shadow-2xl"
+            className="relative mx-auto my-auto w-full max-w-md max-h-[90vh] overflow-y-auto rounded-3xl border border-white/10 bg-[#111] p-6 sm:p-8 text-center shadow-2xl"
           >
             {/* Lock icon */}
             <motion.div
               initial={{ scale: 0.5, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: 0.2, type: "spring", damping: 15 }}
-              className="mb-6 flex justify-center"
+              className="mb-4 sm:mb-6 flex justify-center"
             >
-              <div className="flex h-20 w-20 items-center justify-center rounded-full border border-[#D4AF37]/30 bg-[#D4AF37]/10">
-                <span className="text-4xl">🔒</span>
+              <div className="flex h-16 w-16 sm:h-20 sm:w-20 items-center justify-center rounded-full border border-[#D4AF37]/30 bg-[#D4AF37]/10">
+                <span className="text-3xl sm:text-4xl">🔒</span>
               </div>
             </motion.div>
 

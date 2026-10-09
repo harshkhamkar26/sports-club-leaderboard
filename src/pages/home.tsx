@@ -163,30 +163,30 @@ export default function Home({
                 <Reveal key={a.id}>
                   <motion.div
                     variants={podiumCard}
-                    className={`group relative flex items-center gap-6 overflow-hidden rounded-2xl border p-6 md:p-8 ${
+                    className={`group relative flex items-center gap-3 sm:gap-6 overflow-hidden rounded-2xl border p-4 sm:p-6 md:p-8 ${
                       isFirst
                         ? 'border-[#D4AF37]/40 bg-gradient-to-r from-[#D4AF37]/10 to-transparent'
                         : 'border-white/[0.07] bg-white/[0.02]'
                     }`}
                   >
-                    <span className={`font-display text-5xl font-black md:text-7xl ${isFirst ? 'text-[#D4AF37]' : 'text-white/20'}`}>
+                    <span className={`font-display text-3xl sm:text-5xl md:text-7xl font-black shrink-0 ${isFirst ? 'text-[#D4AF37]' : 'text-white/20'}`}>
                       {String(a.rank).padStart(2, '0')}
                     </span>
-                    <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-full border border-white/10 md:h-28 md:w-28">
+                    <div className="h-16 w-16 sm:h-20 sm:h-20 md:h-28 md:w-28 flex-shrink-0 overflow-hidden rounded-full border border-white/10">
                       <img src={a.photoUrl} alt={a.name} className="h-full w-full object-cover" loading="lazy" />
                     </div>
                     <div className="min-w-0 flex-1">
-                      <p className="font-sans text-[10px] uppercase tracking-[0.3em] text-white/45">{a.className}</p>
-                      <Link href={`/athlete/${a.id}`} className="font-display text-2xl font-black uppercase text-white transition-colors hover:text-[#D4AF37] md:text-4xl">
+                      <p className="font-sans text-[9px] sm:text-[10px] uppercase tracking-[0.3em] text-white/45 truncate">{a.className}</p>
+                      <Link href={`/athlete/${a.id}`} className="font-display text-lg sm:text-2xl md:text-4xl font-black uppercase text-white transition-colors hover:text-[#D4AF37] block truncate">
                         {a.name}
                       </Link>
-                      <div className="mt-3 flex flex-wrap gap-6">
+                      <div className="mt-2 sm:mt-3 flex flex-wrap gap-3 sm:gap-6">
                         <MiniStat value={a.totalPoints} label="Points" gold={isFirst} />
                         <MiniStat value={a.eventsCount} label="Events" />
                         <MiniStat value={a.medals?.gold || 0} label="Gold" gold />
                       </div>
                     </div>
-                    <span className={`hidden font-sans text-4xl md:block ${isFirst ? 'text-[#D4AF37]' : 'text-white/15'}`} aria-hidden>→</span>
+                    <span className={`hidden font-sans text-4xl md:block shrink-0 ${isFirst ? 'text-[#D4AF37]' : 'text-white/15'}`} aria-hidden>→</span>
                   </motion.div>
                 </Reveal>
               );
@@ -415,10 +415,10 @@ export default function Home({
       </div>
 
       {/* Sticky Mobile CTA */}
-      <div className="fixed bottom-0 left-0 right-0 z-50 p-4 md:hidden bg-gradient-to-t from-black via-black/90 to-transparent pb-6 pt-12 pointer-events-none">
+      <div className="fixed bottom-0 left-0 right-0 z-30 p-4 md:hidden bg-gradient-to-t from-black via-black/90 to-transparent pb-6 pt-12 pointer-events-none">
         <Link
           href="/leaderboard"
-          className="w-full flex items-center justify-center gap-2 rounded-full bg-[#D4AF37] px-6 py-4 font-sans text-sm font-bold uppercase tracking-widest text-black shadow-[0_0_20px_rgba(212,175,55,0.4)] pointer-events-auto active:scale-95 transition-transform"
+          className="w-full flex items-center justify-center gap-2 rounded-full bg-[#D4AF37] px-6 py-3.5 font-sans text-xs sm:text-sm font-bold uppercase tracking-widest text-black shadow-[0_0_20px_rgba(212,175,55,0.4)] pointer-events-auto active:scale-95 transition-transform"
         >
           View Live Leaderboard
           <span className="material-symbols-outlined text-[18px]">arrow_forward</span>

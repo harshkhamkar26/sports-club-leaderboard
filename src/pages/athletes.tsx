@@ -109,12 +109,12 @@ export default function AthletesPage({ allAthletes, maleAthletes, femaleAthletes
                 />
               </div>
 
-              <div className="flex items-center gap-2 bg-[#111]/40 p-1 rounded-full border border-white/5 backdrop-blur-md">
+              <div className="flex items-center gap-1 sm:gap-2 bg-[#111]/40 p-1 rounded-full border border-white/5 backdrop-blur-md w-full sm:w-auto justify-center">
                 {["All", "Men", "Women"].map((g) => (
                   <button
                     key={g}
                     onClick={() => setGenderFilter(g)}
-                    className={`relative px-6 py-2 rounded-full font-sans text-xs font-bold uppercase tracking-widest transition-colors ${
+                    className={`relative px-3 sm:px-6 py-2 rounded-full font-sans text-[10px] sm:text-xs font-bold uppercase tracking-widest transition-colors ${
                       genderFilter === g
                         ? "text-black"
                         : "text-white/50 hover:text-white"

@@ -20,15 +20,10 @@ interface Props {
 }
 
 /** Controlled cinematic timeline (ms) for the landing sequence. */
-const TIMELINE = [
-  { phase: 1, at: 500 },   // university identity
-  { phase: 2, at: 2500 },  // PRESENTS
-  { phase: 3, at: 4000 },  // SPORTS PERSON OF THE YEAR
-  { phase: 4, at: 6500 },  // year -> hand off to award stage
-  { phase: 5, at: 9000 },  // categories begin
-  { phase: 6, at: 10500 }, // athlete images reveal
-  { phase: 7, at: 12000 }, // stats reveal
-  { phase: 8, at: 13500 }, // winner badges activate
+const INTRO_TIMELINE = [
+  { phase: 1, at: 350 },   // university identity
+  { phase: 2, at: 1300 },  // 1,000 DREAMS. ONE LEGACY.
+  { phase: 3, at: 2200 },  // Championship action buttons & ceremony reveal link
 ];
 
 export default function SpotyPage({ topAthlete, secondAthlete }: Props) {
@@ -54,17 +49,26 @@ export default function SpotyPage({ topAthlete, secondAthlete }: Props) {
       return;
     }
     const timers: ReturnType<typeof setTimeout>[] = [];
-    TIMELINE.forEach((step) => {
+    INTRO_TIMELINE.forEach((step) => {
       timers.push(
         setTimeout(() => {
           setPhase(step.phase);
-          if (step.phase === 4) setIntroDone(true);
-          if (step.phase === 8) setRevealed(true);
         }, step.at)
       );
     });
     return () => timers.forEach(clearTimeout);
   }, [reducedMotion]);
+
+  const handleEnterCeremony = () => {
+    setIntroDone(true);
+    setPhase(5);
+    setTimeout(() => setPhase(6), 500);
+    setTimeout(() => setPhase(7), 1000);
+    setTimeout(() => {
+      setPhase(8);
+      setRevealed(true);
+    }, 1500);
+  };
 
   useEffect(() => {
     const move = (e: PointerEvent) => {
@@ -107,11 +111,7 @@ export default function SpotyPage({ topAthlete, secondAthlete }: Props) {
         {!introDone && (
           <SpotyIntro
             phase={phase}
-            onComplete={() => {
-              setPhase(8);
-              setIntroDone(true);
-              setRevealed(true);
-            }}
+            onComplete={handleEnterCeremony}
           />
         )}
       </AnimatePresence>

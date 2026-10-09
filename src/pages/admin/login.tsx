@@ -31,7 +31,7 @@ export default function Login() {
         <title>Admin Sign In | Universal AI University</title>
       </Head>
       
-      <main className="flex w-full min-h-screen bg-[#0F1219] font-body-md text-on-surface antialiased overflow-hidden selection:bg-primary/30">
+      <main className="flex flex-col lg:flex-row w-full min-h-screen bg-[#0F1219] font-body-md text-on-surface antialiased overflow-y-auto selection:bg-primary/30">
         {/* Left Side: Brand Panel */}
         <div className="hidden lg:flex w-[55%] relative flex-col justify-between p-8 border-r border-white/5 bg-[#0F1219]">
           {/* Subtle Grid Background */}
@@ -79,16 +79,24 @@ export default function Login() {
         </div>
 
         {/* Right Side: Login Form */}
-        <div className="w-full lg:w-[45%] flex flex-col items-center justify-center p-8 bg-[#18191B] relative shadow-[-20px_0_40px_rgba(0,0,0,0.5)]">
+        <div className="w-full lg:w-[45%] flex flex-col items-center justify-center p-5 sm:p-8 md:p-12 bg-[#18191B] relative shadow-[-20px_0_40px_rgba(0,0,0,0.5)] my-auto min-h-screen lg:min-h-0">
           <div className="w-full max-w-[400px]">
+            {/* Mobile Brand Header */}
+            <div className="lg:hidden flex items-center justify-center gap-3 mb-8">
+              <img src="/images/uaiu-logo.png" alt="UAIU" className="w-8 h-8 object-contain" />
+              <div className="flex flex-col text-left">
+                <span className="text-xs font-bold tracking-widest text-white uppercase">Universal AI University</span>
+                <span className="text-[10px] text-[#FFC107] font-semibold tracking-wider">Admin Portal</span>
+              </div>
+            </div>
             
             {/* Form Header */}
-            <div className="flex flex-col items-center text-center mb-10">
-              <div className="w-16 h-16 rounded-full border border-white/10 flex items-center justify-center mb-6 bg-white/[0.02]">
-                <span className="material-symbols-outlined text-blue-400 text-3xl">lock</span>
+            <div className="flex flex-col items-center text-center mb-8 sm:mb-10">
+              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full border border-white/10 flex items-center justify-center mb-4 sm:mb-6 bg-white/[0.02]">
+                <span className="material-symbols-outlined text-blue-400 text-2xl sm:text-3xl">lock</span>
               </div>
-              <h2 className="font-headline-lg text-4xl font-extrabold text-white mb-3">Sign In</h2>
-              <p className="text-white/50 text-sm font-body-md">Enter your authorized admin credentials to continue</p>
+              <h2 className="font-headline-lg text-3xl sm:text-4xl font-extrabold text-white mb-2 sm:mb-3">Sign In</h2>
+              <p className="text-white/50 text-xs sm:text-sm font-body-md">Enter your authorized admin credentials to continue</p>
             </div>
 
             {error && (

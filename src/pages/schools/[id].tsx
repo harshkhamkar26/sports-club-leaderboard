@@ -192,25 +192,25 @@ export default function SchoolProfile({ school, stats, schoolRank }: SchoolProfi
 
           {/* Medals Breakdown */}
           <Reveal delay={0.3} className="mb-16">
-            <div className="grid grid-cols-3 gap-6 max-w-2xl mx-auto">
-              <div className="text-center">
-                <span className="font-display text-5xl font-black text-[#D4AF37]">
+            <div className="grid grid-cols-3 gap-2 sm:gap-6 max-w-2xl mx-auto">
+              <div className="text-center p-2">
+                <span className="font-display text-3xl sm:text-4xl md:text-5xl font-black text-[#D4AF37]">
                   {stats.gold}
                 </span>
                 <div className="font-sans text-[10px] uppercase tracking-widest text-white/40 mt-1">
                   Gold
                 </div>
               </div>
-              <div className="text-center">
-                <span className="font-display text-5xl font-black text-[#C0C0C0]">
+              <div className="text-center p-2">
+                <span className="font-display text-3xl sm:text-4xl md:text-5xl font-black text-[#C0C0C0]">
                   {stats.silver}
                 </span>
                 <div className="font-sans text-[10px] uppercase tracking-widest text-white/40 mt-1">
                   Silver
                 </div>
               </div>
-              <div className="text-center">
-                <span className="font-display text-5xl font-black text-[#CD7F32]">
+              <div className="text-center p-2">
+                <span className="font-display text-3xl sm:text-4xl md:text-5xl font-black text-[#CD7F32]">
                   {stats.bronze}
                 </span>
                 <div className="font-sans text-[10px] uppercase tracking-widest text-white/40 mt-1">
@@ -221,19 +221,19 @@ export default function SchoolProfile({ school, stats, schoolRank }: SchoolProfi
           </Reveal>
 
           {/* Top Athlete & Strongest Sports */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-16">
             {/* Top Athletes */}
             <Reveal>
-              <div className="rounded-2xl border border-white/10 bg-[#111]/60 p-8 backdrop-blur-sm h-full flex flex-col justify-center">
+              <div className="rounded-2xl border border-white/10 bg-[#111]/60 p-5 sm:p-6 md:p-8 backdrop-blur-sm h-full flex flex-col justify-center">
                 <h3 className="font-display text-sm font-bold uppercase text-white/40 mb-6 tracking-widest text-center">
                   Leading Athletes
                 </h3>
                 
-                <div className="grid grid-cols-2 gap-8">
+                <div className="grid grid-cols-2 gap-4 sm:gap-8">
                   {/* Top Male */}
                   <div className="flex flex-col items-center text-center">
                     <p className="font-sans text-[10px] font-bold uppercase tracking-widest text-[#D4AF37] mb-3">Sportsman</p>
-                    <div className="h-20 w-20 shrink-0 overflow-hidden rounded-full border border-white/10 mb-3">
+                    <div className="h-16 w-16 sm:h-20 sm:h-20 shrink-0 overflow-hidden rounded-full border border-white/10 mb-3">
                       {stats.topMaleAthlete ? (
                         stats.topMaleAthlete.photoUrl ? (
                           <img src={stats.topMaleAthlete.photoUrl} alt={stats.topMaleAthlete.name} className="h-full w-full object-cover" />
@@ -250,7 +250,7 @@ export default function SchoolProfile({ school, stats, schoolRank }: SchoolProfi
                     </div>
                     {stats.topMaleAthlete ? (
                       <>
-                        <h4 className="font-display text-lg font-black uppercase text-white leading-tight">{stats.topMaleAthlete.name}</h4>
+                        <h4 className="font-display text-base sm:text-lg font-black uppercase text-white leading-tight">{stats.topMaleAthlete.name}</h4>
                         <p className="font-sans text-xs text-white/50 mt-1">{stats.topMaleAthlete.totalPoints} pts</p>
                       </>
                     ) : (
@@ -261,7 +261,7 @@ export default function SchoolProfile({ school, stats, schoolRank }: SchoolProfi
                   {/* Top Female */}
                   <div className="flex flex-col items-center text-center">
                     <p className="font-sans text-[10px] font-bold uppercase tracking-widest text-[#8B5CF6] mb-3">Sportswoman</p>
-                    <div className="h-20 w-20 shrink-0 overflow-hidden rounded-full border border-white/10 mb-3">
+                    <div className="h-16 w-16 sm:h-20 sm:h-20 shrink-0 overflow-hidden rounded-full border border-white/10 mb-3">
                       {stats.topFemaleAthlete ? (
                         stats.topFemaleAthlete.photoUrl ? (
                           <img src={stats.topFemaleAthlete.photoUrl} alt={stats.topFemaleAthlete.name} className="h-full w-full object-cover" />
@@ -278,7 +278,7 @@ export default function SchoolProfile({ school, stats, schoolRank }: SchoolProfi
                     </div>
                     {stats.topFemaleAthlete ? (
                       <>
-                        <h4 className="font-display text-lg font-black uppercase text-white leading-tight">{stats.topFemaleAthlete.name}</h4>
+                        <h4 className="font-display text-base sm:text-lg font-black uppercase text-white leading-tight">{stats.topFemaleAthlete.name}</h4>
                         <p className="font-sans text-xs text-white/50 mt-1">{stats.topFemaleAthlete.totalPoints} pts</p>
                       </>
                     ) : (
@@ -292,17 +292,17 @@ export default function SchoolProfile({ school, stats, schoolRank }: SchoolProfi
 
             {/* Strongest Sports */}
             <Reveal delay={0.2}>
-              <div className="rounded-2xl border border-white/10 bg-[#111]/60 p-8 backdrop-blur-sm">
+              <div className="rounded-2xl border border-white/10 bg-[#111]/60 p-5 sm:p-6 md:p-8 backdrop-blur-sm">
                 <h3 className="font-display text-sm font-bold uppercase text-white/40 mb-6 tracking-widest">
                   Strongest Sports
                 </h3>
                 <div className="space-y-4">
                   {stats.strongestSports.map((sport: any, i: number) => (
-                    <div key={sport.name} className="flex items-center gap-4">
-                      <span className="font-display text-sm font-bold text-white/40 w-6">
+                    <div key={sport.name} className="flex items-center gap-3 sm:gap-4">
+                      <span className="font-display text-sm font-bold text-white/40 w-5 sm:w-6 shrink-0">
                         {i + 1}
                       </span>
-                      <span className="font-sans text-sm font-medium text-white min-w-[120px]">
+                      <span className="font-sans text-xs sm:text-sm font-medium text-white min-w-[80px] sm:min-w-[120px] truncate">
                         {sport.name}
                       </span>
                       <div className="flex-1 h-2 rounded-full bg-white/[0.05] overflow-hidden">
@@ -315,7 +315,7 @@ export default function SchoolProfile({ school, stats, schoolRank }: SchoolProfi
                           transition={{ duration: 1, delay: i * 0.1 }}
                         />
                       </div>
-                      <span className="font-display text-sm font-bold text-[#D4AF37] w-16 text-right">
+                      <span className="font-display text-xs sm:text-sm font-bold text-[#D4AF37] w-12 sm:w-16 text-right shrink-0">
                         {sport.points}
                       </span>
                     </div>
