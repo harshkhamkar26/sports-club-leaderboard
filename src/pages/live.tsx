@@ -181,7 +181,7 @@ export default function LiveTVPage({
   return (
     <>
       <Head>
-        <title>UAIU SPORTS LIVE — Digital Broadcast</title>
+        <title>UAI SPORTS LIVE — Digital Broadcast</title>
         <meta name="theme-color" content="#060606" />
       </Head>
 
@@ -212,15 +212,15 @@ export default function LiveTVPage({
                 />
                 <div className="flex flex-col min-w-0">
                   <span className="font-display text-xs sm:text-sm md:text-lg font-black uppercase tracking-[0.15em] text-white truncate">
-                    UAIU Sports Club
+                    UAI Sports Club
                   </span>
                   {activeEvent ? (
                     <span className="font-sans text-[9px] sm:text-[10px] font-semibold uppercase tracking-[0.25em] sm:tracking-[0.3em] text-[#D4AF37] truncate">
-                      {activeEvent.sport?.name || "Sports"} • Season 2025–26
+                      {activeEvent.sport?.name || "Sports"} • Season 2026–2027
                     </span>
                   ) : (
                     <span className="font-sans text-[9px] sm:text-[10px] font-semibold uppercase tracking-[0.25em] sm:tracking-[0.3em] text-white/40 truncate">
-                      Season 2025–26 • Live Display
+                      Season 2026–2027 • Live Display
                     </span>
                   )}
                 </div>
@@ -693,7 +693,7 @@ function LiveTicker({
   const items = [
     ...(activeEvent
       ? [`${activeEvent.sport?.name || "SPORTS"} — ${activeEvent.name}`]
-      : ["UAIU SPORTS LIVE"]),
+      : ["UAI SPORTS LIVE"]),
     maleLeader ? `SPORTSMAN • ${maleLeader.name} — ${maleLeader.totalPoints} PTS` : "",
     femaleLeader ? `SPORTSWOMAN • ${femaleLeader.name} — ${femaleLeader.totalPoints} PTS` : "",
     schools[0] ? `${schools[0].name.toUpperCase()} LEADS THE CAMPUS RACE — ${schools[0].totalPoints} PTS` : "",

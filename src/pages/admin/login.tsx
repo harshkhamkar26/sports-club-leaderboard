@@ -41,7 +41,7 @@ export default function Login() {
           <div className="relative z-10">
             <div className="inline-flex items-center gap-4 bg-white/5 border border-white/10 rounded-2xl p-2 pr-6 backdrop-blur-md">
               <div className="bg-[#0F1219] rounded-xl p-2 border border-white/5">
-                <img src="/images/uaiu-logo.png" alt="UAIU" className="w-8 h-8 object-contain" />
+                <img src="/images/uaiu-logo.png" alt="UAI" className="w-8 h-8 object-contain" />
               </div>
               <div className="flex flex-col">
                 <span className="font-headline-md text-sm font-bold tracking-widest text-white uppercase">Universal AI University</span>
@@ -83,7 +83,7 @@ export default function Login() {
           <div className="w-full max-w-[400px]">
             {/* Mobile Brand Header */}
             <div className="lg:hidden flex items-center justify-center gap-3 mb-8">
-              <img src="/images/uaiu-logo.png" alt="UAIU" className="w-8 h-8 object-contain" />
+              <img src="/images/uaiu-logo.png" alt="UAI" className="w-8 h-8 object-contain" />
               <div className="flex flex-col text-left">
                 <span className="text-xs font-bold tracking-widest text-white uppercase">Universal AI University</span>
                 <span className="text-[10px] text-[#FFC107] font-semibold tracking-wider">Admin Portal</span>

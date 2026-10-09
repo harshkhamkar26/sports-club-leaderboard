@@ -40,14 +40,14 @@ export default function SportsPersonOfTheYear({
   secondAthlete: any;
 }) {
   return (
-    <Layout title="Sports Person of the Year 2025-26 — UAIU">
+    <Layout title="Sports Person of the Year 2026–2027 — UAI">
       <Head>
         <meta name="theme-color" content="#0a0a0a" />
         <meta
           name="description"
-          content="Universal AI University Sports Person of the Year — The Moment of Greatness. A cinematic digital award ceremony celebrating the 2025-26 champions."
+          content="Universal AI University Sports Person of the Year — The Moment of Greatness. A cinematic digital award ceremony celebrating the 2026–2027 champions."
         />
-        <meta property="og:title" content="SPOTY 2025-26 — Universal AI University" />
+        <meta property="og:title" content="SPOTY 2026–2027 — Universal AI University" />
         <meta property="og:type" content="website" />
       </Head>
       <SpotyPage topAthlete={topAthlete} secondAthlete={secondAthlete} />

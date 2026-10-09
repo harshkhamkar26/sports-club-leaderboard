@@ -69,8 +69,8 @@ export default function Layout({
       </Head>
       <div className="min-h-screen bg-[#050505] text-white selection:bg-[#D4AF37]/30 selection:text-white">
         {/* Header */}
-        <header className="fixed top-0 z-50 w-full transition-all duration-500 bg-[#051129]/80 backdrop-blur-xl border-b border-[#3b82f6]/25 shadow-[0_4px_30px_rgba(2,6,23,0.75)]">
-          <div className="absolute inset-x-0 bottom-0 h-[1px] bg-gradient-to-r from-transparent via-[#f5be38]/30 to-transparent pointer-events-none" />
+        <header className="fixed top-0 z-50 w-full transition-all duration-500 bg-[#07152E]/90 backdrop-blur-xl border-b border-[#123D7A]/30 shadow-[0_4px_30px_rgba(7,21,46,0.8)]">
+          <div className="absolute inset-x-0 bottom-0 h-[1px] bg-gradient-to-r from-transparent via-[#D4AF37]/35 to-transparent pointer-events-none" />
           <div className="mx-auto flex h-16 max-w-[1400px] items-center justify-between px-4 sm:px-6 md:px-10">
             <Link href="/" className="flex items-center gap-3 shrink-0" onClick={() => setMobileMenuOpen(false)}>
               <div className="flex items-center gap-2">
@@ -79,7 +79,7 @@ export default function Layout({
                   initial={reducedMotion ? undefined : { opacity: 0, letterSpacing: '0.5em' }}
                   animate={{ opacity: 1, letterSpacing: '0.12em' }}
                   transition={{ duration: 1 }}
-                  className="hidden font-display text-sm font-semibold uppercase text-white/80 xl:block"
+                  className="hidden font-display text-sm font-semibold uppercase text-[#F7F8FC]/90 xl:block"
                 >
                   Sports Club
                 </motion.span>
@@ -94,7 +94,7 @@ export default function Layout({
                     key={l.href}
                     href={l.href}
                     className={`font-sans text-xs font-semibold uppercase tracking-[0.18em] transition-colors ${
-                      active ? 'text-[#D4AF37]' : 'text-white/55 hover:text-white'
+                      active ? 'text-[#D4AF37]' : 'text-[#AAB6C8] hover:text-[#F7F8FC]'
                     }`}
                   >
                     {l.label}
@@ -107,10 +107,10 @@ export default function Layout({
             </nav>
 
             <div className="flex items-center gap-1 sm:gap-2">
-              <Link href="/live" className="hidden items-center gap-2 rounded-full border border-[#ef4444]/40 bg-[#ef4444]/10 px-4 py-2 text-xs font-bold uppercase tracking-widest text-white transition-colors hover:bg-[#ef4444]/20 xl:flex">
-                <span className="h-2 w-2 rounded-full bg-[#ef4444]">
+              <Link href="/live" className="hidden items-center gap-2 rounded-full border border-[#E5484D]/40 bg-[#E5484D]/10 px-4 py-2 text-xs font-bold uppercase tracking-widest text-white transition-colors hover:bg-[#E5484D]/20 xl:flex">
+                <span className="h-2 w-2 rounded-full bg-[#E5484D]">
                   <motion.span
-                    className="block h-2 w-2 rounded-full bg-[#ef4444]"
+                    className="block h-2 w-2 rounded-full bg-[#E5484D]"
                     animate={reducedMotion ? undefined : { opacity: [1, 0.2, 1] }}
                     transition={{ duration: 1.6, repeat: Infinity }}
                   />
@@ -146,7 +146,7 @@ export default function Layout({
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.2 }}
-              className="border-b border-[#3b82f6]/25 bg-[#051129]/95 px-5 py-6 backdrop-blur-2xl md:hidden shadow-2xl max-h-[calc(100vh-64px)] overflow-y-auto"
+              className="border-b border-[#123D7A]/30 bg-[#07152E]/98 px-5 py-6 backdrop-blur-2xl md:hidden shadow-2xl max-h-[calc(100vh-64px)] overflow-y-auto"
             >
               <nav className="flex flex-col gap-2" aria-label="Mobile Navigation">
                 {NAV_LINKS.map((l) => {

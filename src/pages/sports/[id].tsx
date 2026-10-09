@@ -51,7 +51,7 @@ export default function SportDetail({ sport, top3, rankings, totalAthletes, tota
   const rank3 = top3[2] || null;
 
   return (
-    <Layout title={`${sport.name} - UAIU Sports Directory`}>
+    <Layout title={`${sport.name} - UAI Sports Directory`}>
       <CinematicBackground tone="arena" />
       
       <div className="relative z-10 w-full min-h-screen pt-32 pb-24 px-5 md:px-10">

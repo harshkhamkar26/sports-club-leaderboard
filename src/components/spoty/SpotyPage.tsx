@@ -144,7 +144,7 @@ export default function SpotyPage({ topAthlete, secondAthlete }: Props) {
               <motion.div variants={blurReveal} className="mt-6 flex items-center justify-center gap-4">
                 <span className="h-px w-16 bg-[#D4AF37]/50" />
                 <span className="font-display text-xl font-light tracking-[0.3em] text-[#D4AF37]">
-                  2025 — 26
+                  2026 — 2027
                 </span>
                 <span className="h-px w-16 bg-[#D4AF37]/50" />
               </motion.div>
@@ -186,7 +186,7 @@ export default function SpotyPage({ topAthlete, secondAthlete }: Props) {
               <span className="text-[#D4AF37]">•</span> Legacy
             </p>
             <p className="mt-4 font-sans text-[10px] font-semibold uppercase tracking-[0.4em] text-white/35">
-              The Moment of Greatness — 2025 / 26
+              The Moment of Greatness — 2026 / 2027
             </p>
           </motion.section>
         </main>

@@ -141,7 +141,7 @@ export default function Home({
         {/* ============ SECTION 01 — THE SEASON IS UNDERWAY ============ */}
         <section className="mx-auto max-w-[1400px] px-5 py-24 md:px-10 md:py-36">
           <SectionHeading
-            kicker="Season 2025 — 26"
+            kicker="Season 2026 — 2027"
             title="The season is underway"
             sub="Real numbers from the live point ledger. Every competition feeds the race."
           />
@@ -349,10 +349,10 @@ export default function Home({
                   <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-8">
                     <span className="font-display text-5xl font-black text-[#ef4444] mb-2">📺</span>
                     <h3 className="font-display text-3xl font-black uppercase text-white mb-2 group-hover:text-[#ef4444] transition-colors">
-                      UAIU Sports Network
+                      UAI Sports Network
                     </h3>
                     <p className="font-sans text-sm text-white/50 max-w-sm">
-                      Watch live events, cheer for your athletes, and experience the action on the UAIU Sports Network.
+                      Watch live events, cheer for your athletes, and experience the action on the UAI Sports Network.
                     </p>
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 h-1 bg-white/5">
@@ -398,7 +398,7 @@ export default function Home({
                 <span className="h-px flex-1 bg-white/10" />
                 <div className="flex items-center gap-2">
                   <span className="h-3 w-3 rounded-full bg-[#D4AF37]" />
-                  <span className="font-sans text-xs uppercase tracking-[0.3em] text-white/60">Season 2025 — 26</span>
+                  <span className="font-sans text-xs uppercase tracking-[0.3em] text-white/60">Season 2026 — 2027</span>
                 </div>
                 <span className="h-px flex-1 bg-white/10" />
               </div>

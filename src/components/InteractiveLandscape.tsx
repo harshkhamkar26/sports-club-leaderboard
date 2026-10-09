@@ -15,8 +15,8 @@ export default function InteractiveLandscape() {
         }}
       />
       {/* Subtle atmospheric vignette that keeps the golden horizon & royal navy sky brilliant */}
-      <div className="absolute inset-0 bg-gradient-to-t from-[#020617]/70 via-transparent to-[#030a1c]/25 pointer-events-none" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_45%,transparent_50%,rgba(3,10,28,0.35)_100%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#07152E]/70 via-transparent to-[#07152E]/25 pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_45%,transparent_50%,rgba(7,21,46,0.35)_100%)] pointer-events-none" />
     </div>
   );
 }

@@ -299,7 +299,7 @@ const STUDENT_DATA = [
 ];
 
 async function main() {
-  console.log('🏟️  UAIU Sports OS — Database Seeder');
+  console.log('🏟️  UAI Sports OS — Database Seeder');
   console.log('====================================\n');
   console.log(`📊 Total records to process: ${STUDENT_DATA.length}\n`);
 

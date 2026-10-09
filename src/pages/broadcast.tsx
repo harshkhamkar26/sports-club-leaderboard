@@ -176,7 +176,7 @@ export default function BroadcastPage({ broadcast, leaders = [] }: { broadcast: 
     return (
       <>
         <Head>
-          <title>Broadcast | UAIU Sports Network</title>
+          <title>Broadcast | UAI Sports Network</title>
           <meta name="theme-color" content="#0a0a0a" />
         </Head>
         <div className="relative min-h-screen bg-[#060606] overflow-hidden">
@@ -194,7 +194,7 @@ export default function BroadcastPage({ broadcast, leaders = [] }: { broadcast: 
                 </h1>
                 <p className="font-sans text-lg text-white/50 max-w-md">
                   There are no live broadcasts at this time. Check back soon for
-                  the next UAIU Sports Network event.
+                  the next UAI Sports Network event.
                 </p>
               </motion.div>
             </div>
@@ -207,11 +207,11 @@ export default function BroadcastPage({ broadcast, leaders = [] }: { broadcast: 
   return (
     <>
       <Head>
-        <title>Broadcast | UAIU Sports Network</title>
+        <title>Broadcast | UAI Sports Network</title>
         <meta name="theme-color" content="#0a0a0a" />
         <meta
           name="description"
-          content={`Watch ${broadcast.title} live on UAIU Sports Network. Follow @SPORTSCLUB_UAI to unlock.`}
+          content={`Watch ${broadcast.title} live on UAI Sports Network. Follow @SPORTSCLUB_UAI to unlock.`}
         />
       </Head>
 
@@ -230,11 +230,11 @@ export default function BroadcastPage({ broadcast, leaders = [] }: { broadcast: 
                 LIVE
               </span>
               <span className="font-sans text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.25em] sm:tracking-[0.3em] text-white/50">
-                Season 2025–26
+                Season 2026–2027
               </span>
             </div>
             <h1 className="font-display text-xl sm:text-2xl md:text-4xl font-black uppercase tracking-wide text-white truncate">
-              UAIU SPORTS NETWORK
+              UAI SPORTS NETWORK
             </h1>
           </div>
           <img

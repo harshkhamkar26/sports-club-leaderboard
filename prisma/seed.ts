@@ -220,7 +220,7 @@ async function main() {
       status: i < 15 ? "ENDED" : i < 18 ? "SCHEDULED" : "LIVE",
       broadcastUrl: i >= 17 ? "https://example-stream.com/embed/basketball-qf" : null,
       thumbnail: i >= 17 ? "https://images.unsplash.com/photo-1517649763962-0c623066013b?q=80&w=800&auto=format&fit=crop" : null,
-      commentary: i >= 17 ? "Live commentary by Sports Club UAIU" : null,
+      commentary: i >= 17 ? "Live commentary by UAI Sports Club" : null,
     });
   }
 
@@ -359,7 +359,7 @@ async function main() {
   if (harsh) {
     await prisma.award.create({
       data: {
-        name: "Sportsman of the Year 2025-26",
+        name: "Sportsman of the Year 2026-2027",
         description: "Season champion with 385 points across 6 events",
         year: 2025,
         awardCategoryId: createdCategories["Sportsman of the Year"],
@@ -373,7 +373,7 @@ async function main() {
   if (elena) {
     await prisma.award.create({
       data: {
-        name: "Sportswoman of the Year 2025-26",
+        name: "Sportswoman of the Year 2026-2027",
         description: "Season champion with 360 points across 5 events",
         year: 2025,
         awardCategoryId: createdCategories["Sportswoman of the Year"],

@@ -93,7 +93,7 @@ export function buildChampionshipMoments(athlete: any): ChampionMoment[] {
     { label: 'Athletics', meta: `${events} events journeyed` },
     {
       label: 'Championship',
-      meta: '2025 — 26 crowned champion',
+      meta: '2026 — 2027 crowned champion',
       milestone: true,
     },
   ];

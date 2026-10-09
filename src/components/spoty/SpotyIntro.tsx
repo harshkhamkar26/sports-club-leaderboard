@@ -31,9 +31,9 @@ export default function SpotyIntro({
         initial="blackScreen"
         exit="exit"
         className="relative flex min-h-screen flex-col items-center justify-between overflow-hidden bg-transparent px-4 sm:px-6 md:px-8 pt-20 pb-8 sm:pb-12 text-center"
-        aria-label="Universal AI University Sports Club Championship Intro"
+        aria-label="UAI Sports Club — THE ARENA"
       >
-        {/* Live 3D WebGL Scene: Royal Navy Sky, 3D Gold Championship Trophy, Sunrise God Rays & Dynamic Track */}
+        {/* Live 3D WebGL Scene: Deep Navy to Royal Blue Sky, Metallic Gold Trophy, Soft Horizon Glow & Track */}
         <div className="absolute inset-0 z-0">
           <InteractiveLandscape />
         </div>
@@ -44,7 +44,7 @@ export default function SpotyIntro({
             variants={beamVariants}
             initial="hidden"
             animate="visible"
-            className="pointer-events-none absolute top-1/2 left-0 h-px w-full bg-gradient-to-r from-transparent via-[#f5be38]/80 to-transparent"
+            className="pointer-events-none absolute top-1/2 left-0 h-px w-full bg-gradient-to-r from-transparent via-[#D4AF37]/60 to-transparent"
           />
         )}
 
@@ -53,8 +53,8 @@ export default function SpotyIntro({
           <button
             type="button"
             onClick={onComplete}
-            className="group flex items-center gap-1.5 rounded-full border border-white/10 bg-[#030a1c]/60 px-3.5 py-1.5 font-sans text-[11px] font-semibold uppercase tracking-[0.25em] text-white/70 backdrop-blur-md transition-all hover:border-[#f5be38]/50 hover:bg-[#030a1c]/80 hover:text-[#f5be38] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f5be38]"
-            aria-label="Skip introduction and view winners"
+            className="group flex items-center gap-1.5 rounded-full border border-white/10 bg-[#07152E]/70 px-3.5 py-1.5 font-sans text-[11px] font-semibold uppercase tracking-[0.25em] text-[#AAB6C8] backdrop-blur-md transition-all hover:border-[#D4AF37]/50 hover:bg-[#07152E]/90 hover:text-[#D4AF37] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37]"
+            aria-label="Skip introduction"
           >
             <span>Skip intro</span>
             <span className="transition-transform group-hover:translate-x-0.5">→</span>
@@ -68,28 +68,28 @@ export default function SpotyIntro({
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: phase >= 1 ? 1 : 0, y: phase >= 1 ? 0 : -20 }}
             transition={{ duration: 1.0, delay: 0.2 }}
-            className="inline-flex flex-col items-center drop-shadow-[0_4px_16px_rgba(2,6,23,0.9)]"
+            className="inline-flex flex-col items-center drop-shadow-[0_4px_16px_rgba(7,21,46,0.9)]"
           >
-            <div className="flex items-center gap-2 rounded-full border border-[#f5be38]/30 bg-[#030a1c]/70 px-4 py-1.5 backdrop-blur-md shadow-[0_0_20px_rgba(245,190,56,0.15)]">
-              <span className="text-[#f5be38] text-xs">★</span>
-              <p className="font-sans text-[10px] sm:text-xs font-bold uppercase tracking-[0.35em] text-[#f5be38]">
+            <div className="flex items-center gap-2 rounded-full border border-[#D4AF37]/35 bg-[#07152E]/75 px-4 py-1.5 backdrop-blur-md shadow-[0_0_20px_rgba(212,175,55,0.15)]">
+              <span className="text-[#D4AF37] text-xs">★</span>
+              <p className="font-sans text-[10px] sm:text-xs font-bold uppercase tracking-[0.35em] text-[#D4AF37]">
                 UNIVERSAL AI UNIVERSITY
               </p>
-              <span className="text-[#f5be38] text-xs">★</span>
+              <span className="text-[#D4AF37] text-xs">★</span>
             </div>
             <div className="mt-2.5 flex items-center gap-3">
-              <span className="h-px w-8 sm:w-12 bg-gradient-to-r from-transparent to-[#f5be38]/40" />
-              <p className="font-sans text-[11px] sm:text-xs font-semibold uppercase tracking-[0.4em] text-white/90">
-                SPORTS CLUB • 2025–26
+              <span className="h-px w-8 sm:w-12 bg-gradient-to-r from-transparent to-[#D4AF37]/40" />
+              <p className="font-sans text-[11px] sm:text-xs font-semibold uppercase tracking-[0.4em] text-[#F7F8FC]/90">
+                UAI SPORTS CLUB • 2026–2027
               </p>
-              <span className="h-px w-8 sm:w-12 bg-gradient-to-l from-transparent to-[#f5be38]/40" />
+              <span className="h-px w-8 sm:w-12 bg-gradient-to-l from-transparent to-[#D4AF37]/40" />
             </div>
           </motion.div>
         </div>
 
-        {/* Center / Lower Content: Motivational Championship Messaging & CTAs */}
+        {/* Center / Lower Content: Hierarchy — Headline, Tagline, Primary & Secondary CTAs */}
         <div className="relative z-10 mx-auto flex w-full max-w-4xl flex-col items-center mt-auto pb-4 sm:pb-8">
-          {/* Main Championship Headline */}
+          {/* Main Headline */}
           <motion.div
             initial={{ opacity: 0, scale: 0.94 }}
             animate={{ opacity: phase >= 2 ? 1 : 0, scale: phase >= 2 ? 1 : 0.94 }}
@@ -98,41 +98,39 @@ export default function SpotyIntro({
           >
             {isCustomTitle ? (
               <h1 className="font-display font-black uppercase leading-[0.92] drop-shadow-[0_15px_35px_rgba(0,0,0,0.9)]">
-                <span className="block text-[clamp(2.4rem,8vw,6.5rem)] tracking-tight text-white/95">
+                <span className="block text-[clamp(2.4rem,8vw,6.5rem)] tracking-tight text-[#F7F8FC]">
                   {title1}
                 </span>
-                <span className="block text-[clamp(1.6rem,5.5vw,4.5rem)] tracking-[0.08em] bg-gradient-to-r from-[#f5be38] via-[#fff4cc] to-[#f5be38] text-transparent bg-clip-text">
+                <span className="block text-[clamp(1.6rem,5.5vw,4.5rem)] tracking-[0.08em] text-[#D4AF37]">
                   {title2}
                 </span>
-                <span className="block text-[clamp(1.2rem,4vw,3.2rem)] tracking-[0.18em] text-white/90">
+                <span className="block text-[clamp(1.2rem,4vw,3.2rem)] tracking-[0.18em] text-[#F7F8FC]/90">
                   {title3}
                 </span>
               </h1>
             ) : (
               <div>
-                <h1 className="font-display font-black uppercase tracking-tight text-[clamp(2.4rem,7.5vw,5.6rem)] leading-[0.95] drop-shadow-[0_10px_35px_rgba(0,0,0,0.9)]">
-                  <span className="block bg-gradient-to-b from-white via-white/95 to-white/80 bg-clip-text text-transparent">
-                    1,000 DREAMS.
-                  </span>
-                  <span className="block mt-1 bg-gradient-to-r from-[#f5be38] via-[#fff8db] to-[#d48f22] bg-clip-text text-transparent drop-shadow-[0_0_35px_rgba(245,190,56,0.4)]">
-                    ONE LEGACY.
+                {/* 1. The Headline: THE ARENA */}
+                <h1 className="font-display font-black uppercase tracking-tight text-[clamp(2.6rem,8.5vw,6.4rem)] leading-[0.95] drop-shadow-[0_12px_36px_rgba(7,21,46,0.9)]">
+                  <span className="block text-[#F7F8FC]">
+                    THE ARENA
                   </span>
                 </h1>
 
-                {/* Motivational Subheading */}
+                {/* 3. The Supporting Tagline: Where performance becomes legacy. */}
                 <motion.p
                   initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: phase >= 2 ? 1 : 0, y: phase >= 2 ? 0 : 15 }}
                   transition={{ duration: 0.8, delay: 0.4 }}
-                  className="mx-auto mt-4 max-w-2xl font-sans text-xs sm:text-sm md:text-base font-normal tracking-[0.16em] sm:tracking-[0.22em] text-[#dbeafe] drop-shadow-[0_4px_16px_rgba(2,6,23,0.95)]"
+                  className="mx-auto mt-4 max-w-2xl font-sans text-xs sm:text-sm md:text-base font-normal tracking-[0.18em] sm:tracking-[0.24em] text-[#F7F8FC]/90 drop-shadow-[0_4px_16px_rgba(7,21,46,0.95)]"
                 >
-                  Every athlete has a story. Every champion leaves a mark.
+                  Where performance becomes legacy.
                 </motion.p>
               </div>
             )}
           </motion.div>
 
-          {/* Championship Actions */}
+          {/* Actions: 4. ENTER THE ARENA (Primary CTA) & 5. WATCH LIVE (Secondary CTA) */}
           <motion.div
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: phase >= 3 ? 1 : 0, y: phase >= 3 ? 0 : 25 }}
@@ -142,7 +140,7 @@ export default function SpotyIntro({
             {/* Primary Action: ENTER THE ARENA */}
             <Link
               href="/home"
-              className="group relative flex w-full sm:w-auto min-w-[210px] items-center justify-center gap-2.5 rounded-full bg-gradient-to-r from-[#f5be38] via-[#ffd56b] to-[#d48f22] px-7 py-3.5 font-sans text-xs sm:text-sm font-extrabold uppercase tracking-[0.22em] text-[#030a1c] shadow-[0_0_30px_rgba(245,190,56,0.45)] transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_0_45px_rgba(245,190,56,0.7)] active:scale-[0.98]"
+              className="group relative flex w-full sm:w-auto min-w-[220px] items-center justify-center gap-2.5 rounded-full bg-gradient-to-r from-[#D4AF37] via-[#E6C665] to-[#B89228] px-8 py-3.5 font-sans text-xs sm:text-sm font-extrabold uppercase tracking-[0.22em] text-[#07152E] shadow-[0_0_30px_rgba(212,175,55,0.4)] transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_0_45px_rgba(212,175,55,0.65)] active:scale-[0.98]"
             >
               <span>ENTER THE ARENA</span>
               <span className="material-symbols-outlined text-base font-bold transition-transform duration-300 group-hover:translate-x-1">
@@ -150,15 +148,17 @@ export default function SpotyIntro({
               </span>
             </Link>
 
-            {/* Secondary Action: MEET THE ATHLETES */}
+            {/* Secondary Action: WATCH LIVE */}
             <Link
-              href="/athletes"
-              className="group flex w-full sm:w-auto min-w-[210px] items-center justify-center gap-2.5 rounded-full border border-[#38bdf8]/40 bg-[#0a234f]/60 px-7 py-3.5 font-sans text-xs sm:text-sm font-bold uppercase tracking-[0.22em] text-white backdrop-blur-md shadow-[0_0_20px_rgba(14,39,79,0.5)] transition-all duration-300 hover:scale-[1.03] hover:border-[#f5be38]/70 hover:bg-[#154582]/80 hover:text-[#fff4cc] active:scale-[0.98]"
+              href="/live"
+              className="group flex w-full sm:w-auto min-w-[220px] items-center justify-center gap-2.5 rounded-full border border-[#123D7A]/60 bg-[#07152E]/75 px-8 py-3.5 font-sans text-xs sm:text-sm font-bold uppercase tracking-[0.22em] text-[#F7F8FC] backdrop-blur-md shadow-[0_0_20px_rgba(18,61,122,0.4)] transition-all duration-300 hover:scale-[1.03] hover:border-[#D4AF37]/60 hover:bg-[#123D7A]/80 hover:text-white active:scale-[0.98]"
             >
-              <span className="material-symbols-outlined text-base text-[#38bdf8] transition-colors group-hover:text-[#f5be38]">
-                group
+              {/* Live Status Indicator (Red #E5484D) */}
+              <span className="relative flex h-2.5 w-2.5 items-center justify-center">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#E5484D] opacity-75" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-[#E5484D]" />
               </span>
-              <span>MEET THE ATHLETES</span>
+              <span>WATCH LIVE</span>
             </Link>
           </motion.div>
 
@@ -172,10 +172,10 @@ export default function SpotyIntro({
             <button
               type="button"
               onClick={onComplete}
-              className="group flex items-center gap-2 font-sans text-[11px] sm:text-xs font-semibold uppercase tracking-[0.28em] text-white/70 transition-all hover:text-[#f5be38] focus:outline-none"
+              className="group flex items-center gap-2 font-sans text-[11px] sm:text-xs font-semibold uppercase tracking-[0.28em] text-[#AAB6C8] transition-all hover:text-[#D4AF37] focus:outline-none"
             >
-              <span>View 2025–26 Winners & Ceremony</span>
-              <span className="transition-transform duration-300 group-hover:translate-y-0.5 text-[#f5be38]">↓</span>
+              <span>View 2026–2027 Award Ceremony</span>
+              <span className="transition-transform duration-300 group-hover:translate-y-0.5 text-[#D4AF37]">↓</span>
             </button>
           </motion.div>
         </div>

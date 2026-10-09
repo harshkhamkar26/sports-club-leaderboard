@@ -185,7 +185,7 @@ export default function WinnerCard({ category, profile, reveal, isPrimary = fals
                       Official Winner
                     </p>
                     <p className="font-sans text-[9px] sm:text-[10px] uppercase tracking-[0.2em] sm:tracking-[0.25em] text-white/50">
-                      2025 — 26 Season
+                      2026 — 2027 Season
                     </p>
                   </div>
                 </motion.div>

@@ -114,7 +114,7 @@ export default function CrowdEnergy({
           {energyPercent}%
         </span>
         <span className="font-sans text-xs uppercase tracking-widest text-white/40">
-          UAIU SUPPORT
+          UAI SUPPORT
         </span>
       </div>
 

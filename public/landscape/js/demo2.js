@@ -11,7 +11,7 @@ function createLandscape(params) {
   var terrain;
   var trophyGroup, sunFlareMesh, godRaysMesh, particleSystem;
   var particlePositions, particleAlphas;
-  var PARTICLE_COUNT = 160;
+  var PARTICLE_COUNT = 60;
 
   var mouse = { x: 0, y: 0, xDamped: 0, yDamped: 0 };
   var isMobile = typeof window.orientation !== 'undefined' || width < 768;
@@ -44,13 +44,13 @@ function createLandscape(params) {
     skyCanvas.height = 1024;
     var sctx = skyCanvas.getContext('2d');
     var sgrad = sctx.createLinearGradient(0, 0, 0, 1024);
-    sgrad.addColorStop(0.00, '#030a1c'); // Deep Royal Navy Zenith
-    sgrad.addColorStop(0.30, '#0a234f'); // Royal Sapphire
-    sgrad.addColorStop(0.55, '#154582'); // Twilight Azure
-    sgrad.addColorStop(0.72, '#2b65ab'); // Radiant Blue Sky
-    sgrad.addColorStop(0.85, '#d48f22'); // Warm Dawn Horizon
-    sgrad.addColorStop(0.93, '#f5be38'); // Radiant Golden Sunrise
-    sgrad.addColorStop(1.00, '#fff4cc'); // Horizon Light
+    sgrad.addColorStop(0.00, '#07152E'); // Deep Navy Zenith (#07152E)
+    sgrad.addColorStop(0.35, '#0b244d'); // Rich Deep Blue
+    sgrad.addColorStop(0.60, '#123D7A'); // Royal Blue (#123D7A)
+    sgrad.addColorStop(0.78, '#1e5299'); // Atmospheric Azure
+    sgrad.addColorStop(0.88, '#85631a'); // Warm Bronze / Amber
+    sgrad.addColorStop(0.96, '#d4af37'); // Metallic Gold Horizon Glow (#D4AF37)
+    sgrad.addColorStop(1.00, '#f7f8fc'); // Warm White Horizon Light (#F7F8FC)
     sctx.fillStyle = sgrad;
     sctx.fillRect(0, 0, 1024, 1024);
 
@@ -69,7 +69,7 @@ function createLandscape(params) {
     scene.background = skyTexture;
 
     // Atmospheric Fog (blends distant terrain into royal navy)
-    var fogColor = new THREE.Color(0x0e274f);
+    var fogColor = new THREE.Color(0x07152e);
     scene.fog = new THREE.Fog(fogColor, 40, 480);
 
     // Camera setup
@@ -78,23 +78,23 @@ function createLandscape(params) {
     camera.position.z = 4;
 
     // ─── 2. CINEMATIC THREE-POINT LIGHTING ────────────────────────────
-    // Key Sun Light: Warm sunlight from upper-left onto trophy & terrain
-    var keyLight = new THREE.DirectionalLight(0xfff3db, 2.6);
+    // Key Light: Warm directional light onto trophy & terrain
+    var keyLight = new THREE.DirectionalLight(0xfff5e6, 2.1);
     keyLight.position.set(-25, 55, 25);
     scene.add(keyLight);
 
-    // Rim / Backlight: Crisp cyan/royal blue backlight creating dramatic rim contours
-    var rimLight = new THREE.DirectionalLight(0x38bdf8, 2.2);
+    // Rim Light: Subtle royal blue / cyan rim light separating trophy from background
+    var rimLight = new THREE.DirectionalLight(0x60a5fa, 1.8);
     rimLight.position.set(0, 25, -115);
     scene.add(rimLight);
 
-    // Fill Light: Soft golden bounce from track
-    var fillLight = new THREE.DirectionalLight(0xd4af37, 1.2);
+    // Fill Light: Soft metallic gold bounce
+    var fillLight = new THREE.DirectionalLight(0xd4af37, 0.9);
     fillLight.position.set(20, -5, 15);
     scene.add(fillLight);
 
-    // Ambient Light: Soft sapphire sky ambient
-    var ambientLight = new THREE.AmbientLight(0xdbeafe, 1.3);
+    // Ambient Light: Soft warm slate/sapphire ambient
+    var ambientLight = new THREE.AmbientLight(0xdde5f4, 1.1);
     scene.add(ambientLight);
 
     // WebGL Renderer
@@ -173,30 +173,30 @@ function createLandscape(params) {
 
     // Materials
     var goldMaterial = new THREE.MeshStandardMaterial({
-      color: 0xfacc15,       // 24K Championship Gold
-      emissive: 0x2d1b04,    // Warm inner glow
-      roughness: 0.16,       // Lustrous polished finish
-      metalness: 0.94,       // High metallic sheen
+      color: 0xd4af37,       // Authentic Metallic Gold #D4AF37
+      emissive: 0x1f1402,    // Subtle warm bronze depth
+      roughness: 0.22,       // Refined dimensional metallic finish
+      metalness: 0.88,       // High metallic sheen
       envMap: envTexture,
-      envMapIntensity: 2.4
+      envMapIntensity: 1.8
     });
 
     var baseMaterial = new THREE.MeshStandardMaterial({
-      color: 0x18181b,       // Polished obsidian marble plinth
-      roughness: 0.28,
-      metalness: 0.82,
+      color: 0x07152e,       // Deep navy foundation plinth (#07152E)
+      roughness: 0.32,
+      metalness: 0.70,
       envMap: envTexture,
-      envMapIntensity: 1.2
+      envMapIntensity: 1.0
     });
 
     var glowingGoldMaterial = new THREE.MeshStandardMaterial({
-      color: 0xffe066,
-      emissive: 0xd97706,
-      emissiveIntensity: 0.5,
-      roughness: 0.12,
-      metalness: 0.96,
+      color: 0xd4af37,
+      emissive: 0x8c6d1f,
+      emissiveIntensity: 0.35,
+      roughness: 0.24,
+      metalness: 0.85,
       envMap: envTexture,
-      envMapIntensity: 2.8
+      envMapIntensity: 1.8
     });
 
     // B. Build Trophy Geometry Hierarchy
@@ -388,13 +388,13 @@ function createLandscape(params) {
     fctx.fillRect(0, 0, 256, 256);
 
     var flareTexture = new THREE.CanvasTexture(flareCanvas);
-    var flareGeo = new THREE.PlaneBufferGeometry(90, 90);
+    var flareGeo = new THREE.PlaneBufferGeometry(75, 75);
     var flareMat = new THREE.MeshBasicMaterial({
       map: flareTexture,
       transparent: true,
       blending: THREE.AdditiveBlending,
       depthWrite: false,
-      opacity: 0.92
+      opacity: 0.38
     });
     sunFlareMesh = new THREE.Mesh(flareGeo, flareMat);
     sunFlareMesh.position.set(0, 19.5, -125);
@@ -422,13 +422,13 @@ function createLandscape(params) {
     }
 
     var raysTexture = new THREE.CanvasTexture(raysCanvas);
-    var raysGeo = new THREE.PlaneBufferGeometry(140, 140);
+    var raysGeo = new THREE.PlaneBufferGeometry(115, 115);
     var raysMat = new THREE.MeshBasicMaterial({
       map: raysTexture,
       transparent: true,
       blending: THREE.AdditiveBlending,
       depthWrite: false,
-      opacity: 0.42
+      opacity: 0.20
     });
     godRaysMesh = new THREE.Mesh(raysGeo, raysMat);
     godRaysMesh.position.set(0, 19.5, -124);
@@ -463,7 +463,7 @@ function createLandscape(params) {
 
     var pTexture = new THREE.CanvasTexture(pCanvas);
     var pMat = new THREE.PointsMaterial({
-      size: 1.8,
+      size: 1.3,
       map: pTexture,
       transparent: true,
       blending: THREE.AdditiveBlending,
@@ -488,21 +488,21 @@ function createLandscape(params) {
     // Intelligent responsive scaling & position of the championship trophy
     if (trophyGroup) {
       if (width < 640) {
-        trophyGroup.scale.setScalar(0.70);
-        trophyGroup.position.set(0, 21.5, -95);
-        if (trophyGroup.userData) trophyGroup.userData.initialY = 21.5;
+        trophyGroup.scale.setScalar(0.65);
+        trophyGroup.position.set(0, 20.2, -95);
+        if (trophyGroup.userData) trophyGroup.userData.initialY = 19.2;
         if (sunFlareMesh) sunFlareMesh.position.y = 21.5;
         if (godRaysMesh) godRaysMesh.position.y = 21.5;
       } else if (width < 1024) {
-        trophyGroup.scale.setScalar(0.85);
-        trophyGroup.position.set(0, 20.2, -95);
+        trophyGroup.scale.setScalar(0.80);
+        trophyGroup.position.set(0, 19.2, -95);
         if (trophyGroup.userData) trophyGroup.userData.initialY = 20.2;
         if (sunFlareMesh) sunFlareMesh.position.y = 20.2;
         if (godRaysMesh) godRaysMesh.position.y = 20.2;
       } else {
-        trophyGroup.scale.setScalar(1.0);
-        trophyGroup.position.set(0, 19.5, -95);
-        if (trophyGroup.userData) trophyGroup.userData.initialY = 19.5;
+        trophyGroup.scale.setScalar(0.92);
+        trophyGroup.position.set(0, 18.2, -95);
+        if (trophyGroup.userData) trophyGroup.userData.initialY = 18.2;
         if (sunFlareMesh) sunFlareMesh.position.y = 19.5;
         if (godRaysMesh) godRaysMesh.position.y = 19.5;
       }

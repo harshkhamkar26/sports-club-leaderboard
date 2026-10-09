@@ -104,7 +104,7 @@ export default function AthleteProfile({ analytics, globalRank, categoryRank }: 
   const participation = getParticipationLabel(participationRate);
 
   return (
-    <Layout title={`${student.name} | Athlete Profile — UAIU Sports`}>
+    <Layout title={`${student.name} | Athlete Profile — UAI Sports`}>
       <Head>
         <meta name="theme-color" content="#0a0a0a" />
       </Head>
