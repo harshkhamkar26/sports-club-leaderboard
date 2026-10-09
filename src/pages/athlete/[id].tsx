@@ -185,12 +185,12 @@ export default function AthleteProfile({ analytics, globalRank, categoryRank }: 
 
           {/* Participation Rate */}
           <Reveal delay={0.3} className="mb-16">
-            <div className="rounded-2xl border border-white/10 bg-[#111]/60 p-8 backdrop-blur-sm">
+            <div className="rounded-2xl border border-white/10 bg-[#111]/60 p-5 sm:p-8 backdrop-blur-sm">
               <h3 className="font-display text-sm font-bold uppercase text-white/40 mb-6 tracking-widest">
                 Participation Rate
               </h3>
-              <div className="flex items-center gap-6">
-                <div className="flex-1">
+              <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
+                <div className="flex-1 w-full">
                   <div className="relative h-6 w-full rounded-full bg-white/[0.05] overflow-hidden">
                     <motion.div
                       className="h-full rounded-full"

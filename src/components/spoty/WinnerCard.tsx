@@ -75,7 +75,7 @@ export default function WinnerCard({ category, profile, reveal, isPrimary = fals
       aria-label={`${categoryLabel}: ${profile.name}`}
     >
       {/* Athlete image — cinematic full bleed with parallax */}
-      <div className="relative h-[440px] sm:h-[520px] md:h-[640px] lg:h-[720px] overflow-hidden">
+      <div className="relative h-[480px] sm:h-[540px] md:h-[640px] lg:h-[720px] overflow-hidden">
         <motion.img
           src={profile.photoUrl}
           alt={profile.name}

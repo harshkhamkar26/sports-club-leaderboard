@@ -163,16 +163,16 @@ export default function Home({
                 <Reveal key={a.id}>
                   <motion.div
                     variants={podiumCard}
-                    className={`group relative flex items-center gap-3 sm:gap-6 overflow-hidden rounded-2xl border p-4 sm:p-6 md:p-8 ${
+                    className={`group relative flex items-center gap-2.5 sm:gap-6 overflow-hidden rounded-2xl border p-3.5 sm:p-6 md:p-8 ${
                       isFirst
                         ? 'border-[#D4AF37]/40 bg-gradient-to-r from-[#D4AF37]/10 to-transparent'
                         : 'border-white/[0.07] bg-white/[0.02]'
                     }`}
                   >
-                    <span className={`font-display text-3xl sm:text-5xl md:text-7xl font-black shrink-0 ${isFirst ? 'text-[#D4AF37]' : 'text-white/20'}`}>
+                    <span className={`font-display text-2xl sm:text-5xl md:text-7xl font-black shrink-0 ${isFirst ? 'text-[#D4AF37]' : 'text-white/20'}`}>
                       {String(a.rank).padStart(2, '0')}
                     </span>
-                    <div className="h-16 w-16 sm:h-20 sm:h-20 md:h-28 md:w-28 flex-shrink-0 overflow-hidden rounded-full border border-white/10">
+                    <div className="h-14 w-14 sm:h-20 sm:w-20 md:h-28 md:w-28 flex-shrink-0 overflow-hidden rounded-full border border-white/10">
                       <img src={a.photoUrl} alt={a.name} className="h-full w-full object-cover" loading="lazy" />
                     </div>
                     <div className="min-w-0 flex-1">
@@ -493,13 +493,13 @@ function CategoryLeaderCard({ athlete, gender }: { athlete: any; gender: "MALE" 
       <motion.div
         whileHover={{ scale: 1.02 }}
         transition={{ duration: 0.3 }}
-        className="relative overflow-hidden rounded-3xl border p-8 h-full"
+        className="relative overflow-hidden rounded-3xl border p-5 sm:p-7 md:p-8 h-full"
         style={{
           borderColor: `${accentColor}30`,
           background: `linear-gradient(135deg, ${accentColor}10, transparent 60%)`,
         }}
       >
-        <div className="flex items-center gap-6">
+        <div className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-4 sm:gap-6">
           <div className="h-20 w-20 md:h-24 md:w-24 shrink-0 overflow-hidden rounded-full border-2"
             style={{ borderColor: `${accentColor}50` }}
           >
@@ -514,7 +514,7 @@ function CategoryLeaderCard({ athlete, gender }: { athlete: any; gender: "MALE" 
             )}
           </div>
           <div className="min-w-0 flex-1">
-            <p className="font-sans text-[10px] font-bold uppercase tracking-[0.3em]" style={{ color: accentColor }}>
+            <p className="font-sans text-[10px] font-bold uppercase tracking-[0.25em] sm:tracking-[0.3em]" style={{ color: accentColor }}>
               #{String(athlete.rank).padStart(2, "0")} • {title}
             </p>
             <h3 className="mt-1 font-display text-2xl md:text-3xl font-black uppercase text-white truncate">

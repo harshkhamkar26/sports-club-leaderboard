@@ -5,11 +5,11 @@ import { useRouter } from 'next/router';
 import { motion, useReducedMotion } from 'framer-motion';
 
 const NAV_LINKS = [
-  { href: '/home', label: 'Home' },
-  { href: '/leaderboard', label: 'Leaderboard' },
-  { href: '/schools', label: 'Schools' },
-  { href: '/broadcast', label: 'Broadcast' },
-  { href: '/athletes', label: 'Athletes' },
+  { href: '/home', label: 'Home', icon: 'home' },
+  { href: '/leaderboard', label: 'Leaderboard', icon: 'leaderboard' },
+  { href: '/schools', label: 'Schools', icon: 'school' },
+  { href: '/broadcast', label: 'Broadcast', icon: 'podcasts' },
+  { href: '/athletes', label: 'Athletes', icon: 'directions_run' },
 ];
 
 /**
@@ -71,15 +71,15 @@ export default function Layout({
         {/* Header */}
         <header className="fixed top-0 z-50 w-full transition-all duration-500 bg-[#07152E]/90 backdrop-blur-xl border-b border-[#123D7A]/30 shadow-[0_4px_30px_rgba(7,21,46,0.8)]">
           <div className="absolute inset-x-0 bottom-0 h-[1px] bg-gradient-to-r from-transparent via-[#D4AF37]/35 to-transparent pointer-events-none" />
-          <div className="mx-auto flex h-16 max-w-[1400px] items-center justify-between px-4 sm:px-6 md:px-10">
-            <Link href="/" className="flex items-center gap-3 shrink-0" onClick={() => setMobileMenuOpen(false)}>
-              <div className="flex items-center gap-2">
-                <img alt="Universal AI University Sports Club" className="h-9 sm:h-10 w-auto object-contain drop-shadow-lg" src="/images/sports-club-logo.png" />
+          <div className="mx-auto flex h-16 max-w-[1400px] items-center justify-between px-3.5 sm:px-6 md:px-10">
+            <Link href="/" className="flex items-center gap-2.5 sm:gap-3 shrink min-w-0" onClick={() => setMobileMenuOpen(false)}>
+              <div className="flex items-center gap-2 min-w-0">
+                <img alt="Universal AI University Sports Club" className="h-8 sm:h-9 md:h-10 w-auto object-contain drop-shadow-lg shrink-0 max-w-[130px] xs:max-w-none" src="/images/sports-club-logo.png" />
                 <motion.span
                   initial={reducedMotion ? undefined : { opacity: 0, letterSpacing: '0.5em' }}
                   animate={{ opacity: 1, letterSpacing: '0.12em' }}
                   transition={{ duration: 1 }}
-                  className="hidden font-display text-sm font-semibold uppercase text-[#F7F8FC]/90 xl:block"
+                  className="hidden font-display text-sm font-semibold uppercase text-[#F7F8FC]/90 xl:block truncate"
                 >
                   Sports Club
                 </motion.span>
@@ -106,29 +106,30 @@ export default function Layout({
               </Link>
             </nav>
 
-            <div className="flex items-center gap-1 sm:gap-2">
-              <Link href="/live" className="hidden items-center gap-2 rounded-full border border-[#E5484D]/40 bg-[#E5484D]/10 px-4 py-2 text-xs font-bold uppercase tracking-widest text-white transition-colors hover:bg-[#E5484D]/20 xl:flex">
-                <span className="h-2 w-2 rounded-full bg-[#E5484D]">
+            <div className="flex items-center gap-1 sm:gap-2 shrink-0">
+              <Link href="/live" className="hidden items-center gap-2 rounded-full border border-[#E5484D]/40 bg-[#E5484D]/10 px-3.5 py-1.5 text-xs font-bold uppercase tracking-widest text-white transition-colors hover:bg-[#E5484D]/20 xl:flex">
+                <span className="relative flex h-2 w-2">
                   <motion.span
-                    className="block h-2 w-2 rounded-full bg-[#E5484D]"
-                    animate={reducedMotion ? undefined : { opacity: [1, 0.2, 1] }}
+                    className="absolute inline-flex h-full w-full rounded-full bg-[#E5484D]"
+                    animate={reducedMotion ? undefined : { scale: [1, 1.8, 1], opacity: [1, 0.4, 1] }}
                     transition={{ duration: 1.6, repeat: Infinity }}
                   />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-[#E5484D]" />
                 </span>
                 Live
               </Link>
-              <Link href="/search" className="flex h-10 w-10 sm:h-9 sm:w-9 items-center justify-center rounded-full text-white/70 transition-colors hover:bg-white/5 hover:text-white" aria-label="Search">
-                <span className="material-symbols-outlined text-lg">search</span>
+              <Link href="/search" className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full text-white/75 transition-colors hover:bg-white/5 hover:text-white" aria-label="Search">
+                <span className="material-symbols-outlined text-[19px]">search</span>
               </Link>
-              <Link href="/admin/login" className="flex h-10 w-10 sm:h-9 sm:w-9 items-center justify-center rounded-full text-white/70 transition-colors hover:bg-white/5 hover:text-white" aria-label="Admin">
-                <span className="material-symbols-outlined text-lg">account_circle</span>
+              <Link href="/admin/login" className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full text-white/75 transition-colors hover:bg-white/5 hover:text-white" aria-label="Admin">
+                <span className="material-symbols-outlined text-[19px]">account_circle</span>
               </Link>
 
               {/* Mobile Menu Toggle Button */}
               <button
                 type="button"
                 onClick={() => setMobileMenuOpen((prev) => !prev)}
-                className="flex h-11 w-11 items-center justify-center rounded-xl text-white/80 hover:bg-white/5 hover:text-white md:hidden transition-colors focus:outline-none focus:ring-2 focus:ring-[#D4AF37]/50"
+                className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-xl text-white/90 hover:bg-white/5 hover:text-white md:hidden transition-colors focus:outline-none focus:ring-2 focus:ring-[#D4AF37]/50"
                 aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
                 aria-expanded={mobileMenuOpen}
               >
@@ -146,50 +147,106 @@ export default function Layout({
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.2 }}
-              className="border-b border-[#123D7A]/30 bg-[#07152E]/98 px-5 py-6 backdrop-blur-2xl md:hidden shadow-2xl max-h-[calc(100vh-64px)] overflow-y-auto"
+              className="border-b border-[#123D7A]/30 bg-[#07152E]/98 px-4 sm:px-6 py-5 backdrop-blur-2xl md:hidden shadow-2xl max-h-[calc(100dvh-64px)] overflow-y-auto overscroll-contain"
             >
-              <nav className="flex flex-col gap-2" aria-label="Mobile Navigation">
-                {NAV_LINKS.map((l) => {
-                  const active = router.pathname === l.href || (l.href === '/sports' && router.pathname.startsWith('/sports'));
-                  return (
-                    <Link
-                      key={l.href}
-                      href={l.href}
-                      onClick={() => setMobileMenuOpen(false)}
-                      className={`flex items-center justify-between rounded-xl px-4 py-3 font-sans text-xs font-bold uppercase tracking-[0.2em] transition-colors ${
-                        active ? 'bg-[#D4AF37]/15 text-[#D4AF37]' : 'text-white/70 hover:bg-white/5 hover:text-white'
-                      }`}
-                    >
-                      <span>{l.label}</span>
-                      <span className="material-symbols-outlined text-sm opacity-40">chevron_right</span>
-                    </Link>
-                  );
-                })}
-
-                <Link
-                  href="/"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="flex items-center justify-between rounded-xl bg-gradient-to-r from-[#D4AF37]/15 to-transparent px-4 py-3 font-sans text-xs font-bold uppercase tracking-[0.2em] text-[#D4AF37] transition-colors hover:from-[#D4AF37]/25 mt-1"
-                >
-                  <span className="flex items-center gap-2">
-                    <span>🏆</span>
-                    <span>Person of the Year</span>
+              <div className="flex flex-col gap-4">
+                {/* Brand kicker in drawer */}
+                <div className="flex items-center justify-between border-b border-white/[0.06] pb-3 px-1">
+                  <div className="flex items-center gap-2">
+                    <span className="text-[#D4AF37] text-xs">★</span>
+                    <span className="font-sans text-[11px] font-bold uppercase tracking-[0.25em] text-[#D4AF37]">
+                      UAI Athletics
+                    </span>
+                  </div>
+                  <span className="font-sans text-[10px] font-medium uppercase tracking-widest text-[#AAB6C8]/60">
+                    2026–2027
                   </span>
-                  <span className="material-symbols-outlined text-sm opacity-60">chevron_right</span>
-                </Link>
+                </div>
 
-                <Link
-                  href="/live"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="flex items-center justify-between rounded-xl border border-[#ef4444]/30 bg-[#ef4444]/10 px-4 py-3 font-sans text-xs font-bold uppercase tracking-[0.2em] text-white transition-colors hover:bg-[#ef4444]/20 mt-1"
-                >
-                  <span className="flex items-center gap-2">
-                    <span className="h-2 w-2 rounded-full bg-[#ef4444] animate-pulse" />
-                    <span>Watch Live Broadcast</span>
-                  </span>
-                  <span className="text-[10px] uppercase font-bold text-[#ef4444] tracking-widest">LIVE</span>
-                </Link>
-              </nav>
+                {/* Primary Nav Links */}
+                <nav className="flex flex-col gap-1.5" aria-label="Mobile Navigation">
+                  {NAV_LINKS.map((l) => {
+                    const active = router.pathname === l.href || (l.href === '/sports' && router.pathname.startsWith('/sports'));
+                    return (
+                      <Link
+                        key={l.href}
+                        href={l.href}
+                        onClick={() => setMobileMenuOpen(false)}
+                        className={`flex h-12 items-center justify-between rounded-xl px-3.5 font-sans text-xs font-bold uppercase tracking-[0.18em] transition-colors ${
+                          active
+                            ? 'bg-[#D4AF37]/15 text-[#D4AF37] border border-[#D4AF37]/30 shadow-[0_0_15px_rgba(212,175,55,0.15)]'
+                            : 'text-[#F7F8FC]/80 hover:bg-white/5 hover:text-white border border-transparent'
+                        }`}
+                      >
+                        <div className="flex items-center gap-3 min-w-0">
+                          <span className={`material-symbols-outlined text-lg ${active ? 'text-[#D4AF37]' : 'text-white/40'}`}>
+                            {l.icon}
+                          </span>
+                          <span className="truncate">{l.label}</span>
+                        </div>
+                        <span className={`material-symbols-outlined text-sm ${active ? 'text-[#D4AF37]' : 'opacity-30'}`}>
+                          chevron_right
+                        </span>
+                      </Link>
+                    );
+                  })}
+
+                  {/* Championship: Person of the Year */}
+                  <Link
+                    href="/"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={`flex h-12 items-center justify-between rounded-xl px-3.5 font-sans text-xs font-bold uppercase tracking-[0.18em] transition-colors mt-1 ${
+                      onSpoty
+                        ? 'bg-[#D4AF37]/20 text-[#D4AF37] border border-[#D4AF37]/40 shadow-[0_0_20px_rgba(212,175,55,0.2)]'
+                        : 'bg-gradient-to-r from-[#D4AF37]/10 to-transparent text-[#D4AF37] hover:from-[#D4AF37]/20 border border-[#D4AF37]/20'
+                    }`}
+                  >
+                    <div className="flex items-center gap-3 min-w-0">
+                      <span className="text-base shrink-0">🏆</span>
+                      <span className="truncate">Person of the Year</span>
+                    </div>
+                    <span className="material-symbols-outlined text-sm opacity-60">chevron_right</span>
+                  </Link>
+
+                  {/* Watch Live Broadcast */}
+                  <Link
+                    href="/live"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex h-12 items-center justify-between rounded-xl border border-[#E5484D]/35 bg-[#E5484D]/10 px-3.5 font-sans text-xs font-bold uppercase tracking-[0.18em] text-[#F7F8FC] transition-colors hover:bg-[#E5484D]/20 mt-1"
+                  >
+                    <div className="flex items-center gap-3 min-w-0">
+                      <span className="relative flex h-2.5 w-2.5 shrink-0">
+                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#E5484D] opacity-75" />
+                        <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-[#E5484D]" />
+                      </span>
+                      <span className="truncate">Watch Live Broadcast</span>
+                    </div>
+                    <span className="rounded bg-[#E5484D] px-2 py-0.5 text-[9px] font-extrabold uppercase tracking-widest text-white shrink-0">
+                      LIVE
+                    </span>
+                  </Link>
+                </nav>
+
+                {/* Quick actions inside drawer */}
+                <div className="grid grid-cols-2 gap-2 border-t border-white/[0.06] pt-3">
+                  <Link
+                    href="/search"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex items-center justify-center gap-2 rounded-lg border border-white/10 bg-white/[0.02] py-2.5 font-sans text-[11px] font-semibold uppercase tracking-wider text-white/70 hover:bg-white/5 hover:text-white transition-colors"
+                  >
+                    <span className="material-symbols-outlined text-base">search</span>
+                    <span>Search</span>
+                  </Link>
+                  <Link
+                    href="/admin/login"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex items-center justify-center gap-2 rounded-lg border border-white/10 bg-white/[0.02] py-2.5 font-sans text-[11px] font-semibold uppercase tracking-wider text-white/70 hover:bg-white/5 hover:text-white transition-colors"
+                  >
+                    <span className="material-symbols-outlined text-base">account_circle</span>
+                    <span>Profile</span>
+                  </Link>
+                </div>
+              </div>
             </motion.div>
           )}
         </header>
