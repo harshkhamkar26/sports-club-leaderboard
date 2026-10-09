@@ -80,10 +80,10 @@ export default function Layout({
                 src="/images/uaiu-logo.png"
               />
               <span className="h-5 sm:h-6 w-px bg-white/20 shrink-0 hidden xs:block" />
-              {/* UAi Sports Club Crest & Label */}
+              {/* UAI Sports Club Crest & Label */}
               <div className="flex items-center gap-2 min-w-0">
                 <img
-                  alt="UAi Sports Club"
+                  alt="UAI Sports Club"
                   className="h-7 xs:h-8 sm:h-9 md:h-10 w-auto object-contain drop-shadow-lg shrink-0"
                   src="/images/sports-club-logo.png"
                 />
@@ -167,7 +167,7 @@ export default function Layout({
                   <div className="flex items-center gap-2">
                     <span className="text-[#D4AF37] text-xs">★</span>
                     <span className="font-sans text-[11px] font-bold uppercase tracking-[0.25em] text-[#D4AF37]">
-                      UAi Athletics
+                      UAI Athletics
                     </span>
                   </div>
                   <span className="font-sans text-[10px] font-medium uppercase tracking-widest text-[#AAB6C8]/60">
@@ -280,13 +280,13 @@ export default function Layout({
                   />
                   <span className="h-6 sm:h-8 w-px bg-white/20" />
                   <img
-                    alt="UAi Sports Club"
+                    alt="UAI Sports Club"
                     src="/images/sports-club-logo.png"
                     className="h-11 sm:h-14 w-auto object-contain drop-shadow-xl opacity-90"
                   />
                 </div>
                 <p className="font-sans text-[10px] font-semibold uppercase tracking-[0.4em] text-[#D4AF37]">Universal AI University</p>
-                <h2 className="mt-2 font-display text-2xl md:text-3xl font-black uppercase leading-none text-white">UAi Sports Club</h2>
+                <h2 className="mt-2 font-display text-2xl md:text-3xl font-black uppercase leading-none text-white">UAI Sports Club</h2>
                 <p className="mt-4 max-w-sm font-sans text-sm font-light text-white/50 leading-relaxed">
                   The season continues. The legacy remains. Explore the true classification of the best athletes on campus.
                 </p>
@@ -325,7 +325,7 @@ export default function Layout({
           </div>
           <div className="border-t border-white/[0.05] py-6 px-5 flex flex-col md:flex-row justify-between items-center gap-4 bg-black/40">
             <p className="font-sans text-[10px] uppercase tracking-[0.3em] text-white/30">
-              © {new Date().getFullYear()} Universal AI University — UAi Sports Club OS
+              © {new Date().getFullYear()} Universal AI University — UAI Sports Club OS
             </p>
             <div className="flex items-center gap-6">
               <Link href="/privacy" className="font-sans text-[10px] uppercase tracking-[0.2em] text-white/30 hover:text-white/70 transition-colors">Privacy Policy</Link>

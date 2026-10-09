@@ -40,7 +40,7 @@ export default function AdminLayout({ children, title = "Sports Operations Cente
         <nav className="relative z-20 hidden md:flex flex-col h-full w-72 bg-[#0a0a0a]/80 backdrop-blur-xl border-r border-white/5 shrink-0">
           <div className="p-8">
             <Link href="/" className="flex items-center gap-4 mb-2">
-              <img src="/images/sports-club-logo.png" alt="UAi Sports Club" className="h-10 w-auto object-contain opacity-80" />
+              <img src="/images/sports-club-logo.png" alt="UAI Sports Club" className="h-10 w-auto object-contain opacity-80" />
               <div className="flex flex-col">
                 <span className="font-sans text-[9px] font-bold uppercase tracking-[0.3em] text-[#D4AF37]">Universal AI</span>
                 <span className="font-display text-lg font-black uppercase text-white tracking-wide">Sports Club</span>
@@ -97,7 +97,7 @@ export default function AdminLayout({ children, title = "Sports Operations Cente
         {/* MOBILE HEADER */}
         <nav className="md:hidden relative z-30 flex items-center justify-between px-4 py-3 bg-[#0a0a0a]/95 backdrop-blur-md border-b border-white/10 fixed w-full top-0">
           <Link href="/admin/dashboard" className="flex items-center gap-3">
-             <img src="/images/sports-club-logo.png" alt="UAi Sports Club" className="h-8 w-auto object-contain opacity-80" />
+             <img src="/images/sports-club-logo.png" alt="UAI Sports Club" className="h-8 w-auto object-contain opacity-80" />
              <h1 className="font-sans text-[10px] font-bold uppercase tracking-[0.2em] text-white">Operations Center</h1>
           </Link>
           <button 

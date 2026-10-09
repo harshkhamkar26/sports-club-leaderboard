@@ -69,7 +69,7 @@ export default function AthletesPage({ allAthletes, maleAthletes, femaleAthletes
   }, [activeAthletes, search]);
 
   return (
-    <Layout title="Athletes | UAi Sports Directory">
+    <Layout title="Athletes | UAI Sports Directory">
       <Head>
         <meta name="theme-color" content="#0a0a0a" />
       </Head>
@@ -192,7 +192,7 @@ export default function AthletesPage({ allAthletes, maleAthletes, femaleAthletes
                             {athlete.name}
                           </h3>
                           <p className="mt-1 font-sans text-[10px] uppercase tracking-widest text-[#D4AF37]">
-                            {athlete.school?.name || "UAi Athlete"}
+                            {athlete.school?.name || "UAI Athlete"}
                           </p>
                           <p className="mt-1 font-sans text-xs text-white/40">
                             {athlete.className} • {athlete.rollNumber}

@@ -1,7 +1,7 @@
 import { prisma } from "./prisma";
 
 /**
- * UAi Sports OS — Analytics Engine
+ * UAI Sports OS — Analytics Engine
  * All aggregation logic for the Sports Command Center.
  */
 

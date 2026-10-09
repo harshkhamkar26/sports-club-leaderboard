@@ -15,7 +15,7 @@ interface CheerButtonProps {
 const CHEER_CONFIG: Record<CheerType, { label: string; icon: string; color: string }> = {
   CLAP: { label: "LET'S GO!", icon: "👏", color: "#3B82F6" },
   FIRE: { label: "FIRE!", icon: "🔥", color: "#EF4444" },
-  GO: { label: "COME ON UAi!", icon: "💪", color: "#10B981" },
+  GO: { label: "COME ON UAI!", icon: "💪", color: "#10B981" },
   CHAMPIONS: { label: "CHAMPIONS!", icon: "🏆", color: "#D4AF37" },
   SUPPORT: { label: "SUPPORT!", icon: "❤️", color: "#EC4899" },
 };

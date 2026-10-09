@@ -212,145 +212,146 @@ export default function LiveTVPage({
   return (
     <>
       <Head>
-        <title>UAi SPORTS LIVE — Digital Broadcast</title>
+        <title>UAI SPORTS LIVE — Digital Broadcast</title>
         <meta name="theme-color" content="#060606" />
       </Head>
 
       {/* TV Frame */}
       <div
-        className="relative min-h-screen bg-[#060606] text-white overflow-hidden font-sans selection:bg-transparent"
+        className="relative min-h-screen flex flex-col justify-between bg-[#060606] text-white overflow-hidden font-sans selection:bg-transparent"
         style={{ cursor: isDisplayMode && !showControlsInDisplay ? "none" : undefined }}
       >
         {/* Cinematic Background */}
         {screen !== "intro" && <CinematicBackground tone="live" />}
 
-        {/* TV Header Bar — Persistent across all states except intro */}
-        <AnimatePresence>
-          {screen !== "intro" && (
-            <motion.header
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              className="relative z-20 flex items-center justify-between px-4 sm:px-6 md:px-12 py-3 sm:py-5"
-              style={{ borderBottom: "1px solid rgba(255,255,255,0.06)" }}
-            >
-              {/* Left: Branding — Official Universal AI University & UAi Sports Club */}
-              <div className="flex items-center gap-2.5 sm:gap-4 min-w-0">
-                <img
-                  src="/images/uaiu-logo.png"
-                  alt="Universal AI University"
-                  className="h-6 sm:h-8 md:h-10 w-auto object-contain opacity-95 shrink-0 max-w-[110px] xs:max-w-[140px] sm:max-w-none"
-                />
-                <span className="h-5 sm:h-7 w-px bg-white/20 shrink-0 hidden xs:block" />
-                <img
-                  src="/images/sports-club-logo.png"
-                  alt="UAi Sports Club"
-                  className="h-7 sm:h-9 md:h-10 w-auto object-contain opacity-90 shrink-0"
-                />
-                <div className="flex flex-col min-w-0">
-                  <span className="font-display text-xs sm:text-sm md:text-lg font-black uppercase tracking-[0.15em] text-white truncate">
-                    UAi Sports Club
-                  </span>
-                  {activeEvent ? (
-                    <span className="font-sans text-[9px] sm:text-[10px] font-semibold uppercase tracking-[0.25em] sm:tracking-[0.3em] text-[#D4AF37] truncate">
-                      {activeEvent.sport?.name || "Sports"} • Season 2026–2027
-                    </span>
-                  ) : (
-                    <span className="font-sans text-[9px] sm:text-[10px] font-semibold uppercase tracking-[0.25em] sm:tracking-[0.3em] text-white/40 truncate">
-                      Season 2026–2027 • Live Display
-                    </span>
-                  )}
-                </div>
-              </div>
+        {/* TV Header Bar — Persistent across all states */}
+        <header
+          className="relative z-20 flex items-center justify-between px-4 sm:px-6 md:px-12 py-3 sm:py-4 bg-black/40 backdrop-blur-md"
+          style={{ borderBottom: "1px solid rgba(255,255,255,0.06)" }}
+        >
+          {/* Left: Branding — Official Universal AI University & UAI Sports Club */}
+          <div className="flex items-center gap-2.5 sm:gap-4 min-w-0">
+            <img
+              src="/images/uaiu-logo.png"
+              alt="Universal AI University"
+              className="h-6 sm:h-8 md:h-10 w-auto object-contain opacity-95 shrink-0 max-w-[110px] xs:max-w-[140px] sm:max-w-none"
+            />
+            <span className="h-5 sm:h-7 w-px bg-white/20 shrink-0 hidden xs:block" />
+            <img
+              src="/images/sports-club-logo.png"
+              alt="UAI Sports Club"
+              className="h-7 sm:h-9 md:h-10 w-auto object-contain opacity-90 shrink-0"
+            />
+            <div className="flex flex-col min-w-0">
+              <span className="font-display text-xs sm:text-sm md:text-lg font-black uppercase tracking-[0.15em] text-white truncate">
+                UAI Sports Club
+              </span>
+              {activeEvent ? (
+                <span className="font-sans text-[9px] sm:text-[10px] font-semibold uppercase tracking-[0.25em] sm:tracking-[0.3em] text-[#D4AF37] truncate">
+                  {activeEvent.sport?.name || "Sports"} • Season 2026–2027
+                </span>
+              ) : (
+                <span className="font-sans text-[9px] sm:text-[10px] font-semibold uppercase tracking-[0.25em] sm:tracking-[0.3em] text-white/40 truncate">
+                  Season 2026–2027 • Live Display
+                </span>
+              )}
+            </div>
+          </div>
 
-              {/* Right: LIVE indicator + Clock (Always unobstructed) */}
-              <div className="flex items-center gap-2.5 sm:gap-6 shrink-0">
-                <div className="flex items-center gap-1.5 sm:gap-2 rounded-full bg-[#ef4444]/15 border border-[#ef4444]/30 px-2.5 sm:px-4 py-1 sm:py-1.5">
-                  <span className="relative flex h-2 sm:h-2.5 w-2 sm:w-2.5">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#ef4444] opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2 sm:h-2.5 w-2 sm:w-2.5 bg-[#ef4444]"></span>
-                  </span>
-                  <span className="font-sans text-[10px] sm:text-xs font-black uppercase tracking-[0.2em] text-[#ef4444]">
-                    LIVE
-                  </span>
-                </div>
-                <div className="flex items-center gap-2 sm:gap-4">
-                  <span className="font-data-tabular text-sm sm:text-lg md:text-xl font-bold text-white/80">
-                    {clock.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
-                  </span>
-                  <span className="hidden sm:inline font-sans text-[10px] uppercase tracking-widest text-white/40">
-                    {clock.toLocaleDateString([], { weekday: "short", day: "numeric", month: "short" })}
-                  </span>
-                </div>
-              </div>
-            </motion.header>
-          )}
-        </AnimatePresence>
+          {/* Right: Skip Intro (during intro) + LIVE indicator + Clock (Always unobstructed) */}
+          <div className="flex items-center gap-2 sm:gap-4 md:gap-6 shrink-0">
+            {screen === "intro" && (
+              <button
+                type="button"
+                onClick={() => goToScreen("male")}
+                className="group flex items-center gap-1.5 rounded-full border border-white/10 bg-[#07152E]/70 px-2.5 sm:px-3.5 py-1 sm:py-1.5 font-sans text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.2em] text-[#AAB6C8] backdrop-blur-md transition-all hover:border-[#D4AF37]/50 hover:bg-[#07152E]/90 hover:text-[#D4AF37]"
+                aria-label="Skip introduction"
+              >
+                <span>Skip</span>
+                <span className="hidden xs:inline">intro</span>
+                <span className="transition-transform group-hover:translate-x-0.5">→</span>
+              </button>
+            )}
+            <div className="flex items-center gap-1.5 sm:gap-2 rounded-full bg-[#ef4444]/15 border border-[#ef4444]/30 px-2.5 sm:px-4 py-1 sm:py-1.5">
+              <span className="relative flex h-2 sm:h-2.5 w-2 sm:w-2.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#ef4444] opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 sm:h-2.5 w-2 sm:w-2.5 bg-[#ef4444]"></span>
+              </span>
+              <span className="font-sans text-[10px] sm:text-xs font-black uppercase tracking-[0.2em] text-[#ef4444]">
+                LIVE
+              </span>
+            </div>
+            <div className="flex items-center gap-2 sm:gap-4">
+              <span className="font-data-tabular text-sm sm:text-lg md:text-xl font-bold text-white/80">
+                {clock.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
+              </span>
+              <span className="hidden sm:inline font-sans text-[10px] uppercase tracking-widest text-white/40">
+                {clock.toLocaleDateString([], { weekday: "short", day: "numeric", month: "short" })}
+              </span>
+            </div>
+          </div>
+        </header>
 
         {/* Event Banner — if real event exists */}
-        <AnimatePresence>
-          {activeEvent && LIVE_DISPLAY_CONFIG.showEventBanner && (
-            <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              className="relative z-10 mx-auto max-w-[1600px] px-6 md:px-12 mt-4"
-            >
-              <div className="flex items-center gap-4 rounded-2xl border border-white/10 bg-black/40 backdrop-blur-md px-5 py-3">
-                <span className="flex items-center gap-2 rounded-full bg-[#ef4444]/10 border border-[#ef4444]/30 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-[#ef4444]">
-                  Live Event
+        {activeEvent && LIVE_DISPLAY_CONFIG.showEventBanner && (
+          <div className="relative z-10 mx-auto max-w-[1600px] w-full px-4 sm:px-6 md:px-12 mt-3">
+            <div className="flex items-center gap-4 rounded-2xl border border-white/10 bg-black/40 backdrop-blur-md px-5 py-2.5">
+              <span className="flex items-center gap-2 rounded-full bg-[#ef4444]/10 border border-[#ef4444]/30 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-[#ef4444]">
+                Live Event
+              </span>
+              <span className="font-display text-sm md:text-lg font-bold uppercase text-white truncate">
+                {activeEvent.name}
+              </span>
+              {activeEvent.category && (
+                <span className="hidden md:inline font-sans text-xs text-white/50">
+                  {activeEvent.category}
                 </span>
-                <span className="font-display text-sm md:text-lg font-bold uppercase text-white truncate">
-                  {activeEvent.name}
+              )}
+              {activeEvent.venue && (
+                <span className="hidden lg:inline-flex items-center gap-1 font-sans text-xs text-white/40 ml-auto">
+                  <span className="material-symbols-outlined text-xs">location_on</span>
+                  {activeEvent.venue}
                 </span>
-                {activeEvent.category && (
-                  <span className="hidden md:inline font-sans text-xs text-white/50">
-                    {activeEvent.category}
-                  </span>
-                )}
-                {activeEvent.venue && (
-                  <span className="hidden lg:inline-flex items-center gap-1 font-sans text-xs text-white/40 ml-auto">
-                    <span className="material-symbols-outlined text-xs">location_on</span>
-                    {activeEvent.venue}
-                  </span>
-                )}
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+              )}
+            </div>
+          </div>
+        )}
 
         {/* MAIN DISPLAY AREA */}
-        {screen === "intro" ? (
-          <SpotyIntro 
-            phase={introPhase} 
-            onComplete={() => goToScreen("male")} 
-            title1="LIVE" 
-            title2="DISPLAY" 
-            title3="OS" 
-          />
-        ) : (
-          <section className="relative z-10 mx-auto max-w-[1600px] px-6 md:px-12 py-10 flex flex-col items-center justify-center min-h-[calc(100vh-260px)]">
-            <AnimatePresence mode="wait">
-              {screen === "male" && (
-                <AthleteScreen
-                  key="male"
-                  athlete={maleLeader}
-                  accent="gold"
-                  category="SPORTSMAN"
-                />
-              )}
-              {screen === "female" && (
-                <AthleteScreen
-                  key="female"
-                  athlete={femaleLeader}
-                  accent="ultraviolet"
-                  category="SPORTSWOMAN"
-                />
-              )}
-              {screen === "schools" && <SchoolScreen key="schools" schools={schools} />}
-            </AnimatePresence>
-          </section>
-        )}
+        <main className="relative z-10 flex-1 flex flex-col justify-center items-center w-full min-h-[calc(100vh-220px)] pb-24 sm:pb-28 px-4 sm:px-6 md:px-12">
+          {screen === "intro" ? (
+            <SpotyIntro 
+              phase={introPhase} 
+              onComplete={() => goToScreen("male")} 
+              title1="LIVE" 
+              title2="DISPLAY" 
+              title3="OS" 
+              isLiveDisplay
+            />
+          ) : (
+            <section className="relative z-10 w-full max-w-[1600px] flex flex-col items-center justify-center my-auto">
+              <AnimatePresence mode="wait">
+                {screen === "male" && (
+                  <AthleteScreen
+                    key="male"
+                    athlete={maleLeader}
+                    accent="gold"
+                    category="SPORTSMAN"
+                  />
+                )}
+                {screen === "female" && (
+                  <AthleteScreen
+                    key="female"
+                    athlete={femaleLeader}
+                    accent="ultraviolet"
+                    category="SPORTSWOMAN"
+                  />
+                )}
+                {screen === "schools" && <SchoolScreen key="schools" schools={schools} />}
+              </AnimatePresence>
+            </section>
+          )}
+        </main>
 
         {/* Ticker */}
         {LIVE_DISPLAY_CONFIG.tickerEnabled && (
@@ -464,7 +465,7 @@ function AthleteScreen({
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 mb-4">
             <span className="material-symbols-outlined text-[#D4AF37] text-sm">emoji_events</span>
             <span className="font-sans text-[11px] font-bold uppercase tracking-[0.25em] text-[#D4AF37]">
-              UAi Athletics Championship • Season 2026–2027
+              UAI Athletics Championship • Season 2026–2027
             </span>
           </div>
           <h1 className="font-display text-3xl sm:text-5xl md:text-6xl font-black uppercase text-white mb-3">
@@ -502,7 +503,7 @@ function AthleteScreen({
           <div className="flex items-center justify-center md:justify-start gap-2 mb-2 sm:mb-3">
             <span className="material-symbols-outlined text-[#D4AF37] text-sm sm:text-base">emoji_events</span>
             <span className="font-sans text-[10px] sm:text-xs font-bold uppercase tracking-[0.28em] text-[#D4AF37]">
-              UAi Athletics Championship • Season 2026–2027
+              UAI Athletics Championship • Season 2026–2027
             </span>
           </div>
 
@@ -671,7 +672,7 @@ function SchoolScreen({ schools }: { schools: LiveSchool[] }) {
     >
       <div className="text-center mb-8 sm:mb-10">
         <p className="font-sans text-xs font-bold uppercase tracking-[0.4em] text-[#D4AF37] mb-3">
-          UAi School Championship
+          UAI School Championship
         </p>
         <h2 className="font-display text-3xl sm:text-4xl md:text-6xl font-black uppercase text-white tracking-tight">
           The Race for Campus Glory
@@ -772,7 +773,7 @@ function LiveTicker({
   const items = [
     ...(activeEvent
       ? [`${activeEvent.sport?.name || "SPORTS"} — ${activeEvent.name}`]
-      : ["UAi SPORTS LIVE"]),
+      : ["UAI SPORTS LIVE"]),
     maleLeader ? `SPORTSMAN • ${maleLeader.name} — ${maleLeader.totalPoints} PTS` : "",
     femaleLeader ? `SPORTSWOMAN • ${femaleLeader.name} — ${femaleLeader.totalPoints} PTS` : "",
     schools[0] ? `${schools[0].name.toUpperCase()} LEADS THE CAMPUS RACE — ${schools[0].totalPoints} PTS` : "",

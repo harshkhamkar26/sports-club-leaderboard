@@ -40,7 +40,7 @@ export default function SportsPersonOfTheYear({
   secondAthlete: any;
 }) {
   return (
-    <Layout title="Sports Person of the Year 2026–2027 — UAi">
+    <Layout title="Sports Person of the Year 2026–2027 — UAI">
       <Head>
         <meta name="theme-color" content="#0a0a0a" />
         <meta
